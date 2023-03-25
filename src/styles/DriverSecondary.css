@@ -1,0 +1,162 @@
+#driver-secondary {
+  margin-top: 400px;
+  height: 25vh;
+  width: 672px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  padding-top: 2%;
+  padding-left: 5%;
+  font-family: "Nunito", sans-serif;
+  display: grid;
+  grid-template-columns: 200px 250px 240px;
+  grid-template-rows: 0 0;
+  position: fixed;
+}
+
+.driver-secondary-item {
+  margin-top: -15px;
+}
+
+/* LEFT SIDE OF SCREEN */
+.lap-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  text-align: center;
+  grid-gap: 30px;
+  color: var(--white);
+  margin-left: -20px;
+}
+
+.lap-list-item {
+  height: 0;
+  font-size: 20px;
+}
+
+.current-lap-time {
+  color: var(--light-aqua);
+}
+
+.continuation {
+  color: var(--white);
+  margin-top: 20px;
+}
+/* END OF LEFT SIDE OF SCREEN */
+
+
+/* MIDDLE SCREEN */
+.laps-remaining {
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: 20px;
+}
+
+.laps-gradient {
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  margin: -10px auto auto 40px;
+  position: fixed;
+  background: linear-gradient(to top, var(--dark-blue), var(--light-aqua));
+}
+
+.laps-inner {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: var(--dark-grey);
+  margin: 10px auto auto 10px;
+  position: fixed;
+}
+
+.laps-inner > p {
+  color: var(--white);
+  font-size: 60px;
+  margin-top: 30px;
+}
+
+.sector-time {
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: 200px;
+}
+
+.sector-time-value {
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: -25px;
+  color: var(--yellow);
+}
+/* END OF MIDDLE SCREEN */
+
+/* START OF RIGHT SCREEN */
+.delta-front-secondary {
+  margin-top: 4px;
+  margin-left: 40px;
+}
+
+.delta-back-secondary {
+  margin-top: 5px;
+  margin-left: 40px;
+}
+
+.delta-grid-secondary {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 2px 2px;
+  grid-template-rows: auto auto;
+  text-align: center;
+  grid-gap: 45px;
+}
+
+.delta-grid-item-secondary {
+  font-size: 28px;
+  color: var(--white);
+}
+
+.delta-grid-item-secondary > p {
+  margin-top: 15px;
+}
+
+.map-image {
+  margin-top: -30px;
+  margin-left: -30px;
+  margin-bottom: 30px;
+}
+/* END OF RIGHT SCREEN */
+
+/* STYLE FOR DELTA TRIANGLE */
+.triangle-secondary {
+  position: relative;
+  transform: scale(var(--ggs,1));
+  width: 31px;
+  height: 43px;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid var(--light-grey);
+}
+.triangle-secondary,
+.triangle-secondary::before {
+  display: block;
+  box-sizing: border-box;
+  border-right: 3px solid transparent
+}
+.triangle-secondary::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 3px solid var(--light-grey);
+  border-top: 3px solid var(--light-grey);
+  border-bottom: 3px solid transparent;
+  transform: rotate(45deg) skew(10deg,10deg);
+  left: -2px;
+  bottom: -18px
+}
+
+.delta-back > .delta-grid > .delta-grid-item > .triangle-secondary::before {
+  bottom: -15.9px
+}
+/* END OF STYLE FOR DELTA TRIANGLE */
