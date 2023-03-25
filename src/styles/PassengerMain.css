@@ -1,0 +1,128 @@
+#passenger-main {
+  margin-top: 10px;
+  height: 378px;
+  width: 672px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  display: grid;
+  grid-template-columns: 200px 250px 240px;
+  grid-template-rows: 0 0;
+}
+
+.passenger-main-item {
+  margin-top: 10px;
+}
+
+/* MID SCREEN */
+.laps-remaining-passenger {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: 20px;
+}
+
+.laps-remaining-value {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--bright-blue);
+  margin-left: 180px;
+  margin-top: -100px;
+}
+
+.laps-remaining-value > p {
+  font-size: 50px;
+  color: var(--yellow);
+  margin-top: 5px;
+}
+
+.map-image-passenger {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.delta-front-passenger {
+  margin-top: 4px;
+  margin-left: 40px;
+}
+
+.delta-back-passenger {
+  margin-top: 5px;
+  margin-left: 40px;
+}
+
+.delta-grid-passenger {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 20px auto;
+  grid-template-rows: auto auto;
+  text-align: center;
+}
+
+.delta-grid-item-passenger {
+  font-size: 20px;
+  color: var(--white);
+}
+
+.delta-grid-item-passenger > p {
+  margin-top: 20px;
+}
+
+.triangle-passenger {
+  position: relative;
+  transform: scale(var(--ggs,1));
+  width: 31px;
+  height: 43px;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid var(--light-grey);
+}
+.triangle-passenger,
+.triangle-passenger::before {
+  display: block;
+  box-sizing: border-box;
+  border-right: 3px solid transparent
+}
+.triangle-passenger::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-left: 3px solid var(--light-grey);
+  border-top: 3px solid var(--light-grey);
+  border-bottom: 3px solid transparent;
+  transform: rotate(45deg) skew(10deg,10deg);
+  left: -2px;
+  bottom: -18px
+}
+
+.delta-back > .delta-grid > .delta-grid-item > .triangle-passenger::before {
+  bottom: -15.9px
+}
+/* END OF MID SCREEN */
+
+/* RIGHT SCREEN */
+.sector-time-passenger {
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: 10px;
+}
+
+.sector-time-value-passenger {
+  font-size: 25px;
+  font-style: italic;
+  color: var(--white);
+  margin-top: -25px;
+  color: var(--yellow);
+}
+
+.instructions {
+  font-size: 30px;
+  color: var(--white);
+  margin-top: 80px;
+  margin-bottom: 43px;
+}

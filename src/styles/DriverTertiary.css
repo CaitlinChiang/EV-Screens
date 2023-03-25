@@ -1,0 +1,174 @@
+#driver-tertiary {
+  margin-top: 10px;
+  height: 378px;
+  width: 672px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  display: grid;
+  grid-template-rows: 0 0;
+}
+
+.driver-tertiary-item {
+  margin-top: 10px;
+}
+
+/* LEFT SCREEN */
+.wheel-pressure-tertiary {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 250px 200px;
+  grid-template-rows: auto auto; 
+  text-align: center;
+  grid-gap: 30px;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.wheel-tertiary {
+  width: 90px;
+  height: 120px;
+  border: 4px solid var(--dark-blue);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 23px;
+  padding: 0;
+}
+
+.wheel-tertiary > p:first-child {
+  margin-top: 5px;
+}
+
+.wheel-tertiary > p:nth-child(2) {
+  margin-top: 50px;
+}
+
+.break-temp-left {
+  margin-top: -40px;
+  margin-left: 130px;
+}
+
+.break-temp-right {
+  margin-top: -40px;
+  margin-left: -220px;
+}
+
+.wheel-connector-tertiary-left-warning {
+  height: 50px;
+  width: 30px;
+  margin: -105px auto auto 94px;
+  background: linear-gradient(to right, var(--dark-red), var(--light-red));;
+}
+
+.wheel-connector-tertiary-left-normal {
+  height: 50px;
+  width: 30px;
+  margin: -105px auto auto 94px;
+  background: linear-gradient(to right, var(--darker-yellow), var(--yellow));;
+}
+
+.wheel-connector-tertiary-right-warning {
+  height: 50px;
+  width: 30px;
+  margin: -105px auto auto -34px;
+  background: linear-gradient(to right, var(--dark-red), var(--light-red));;
+}
+
+.wheel-connector-tertiary-right-normal {
+  height: 50px;
+  width: 30px;
+  margin: -105px auto auto -34px;
+  background: linear-gradient(to right, var(--darker-yellow), var(--yellow));;
+}
+/* END OF LEFT SCREEN */
+
+/* RIGHT SCREEN */
+.speed-outer-tertiary {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid var(--dark-blue);
+  margin-top: 10px;
+  margin-left: 430px;
+}
+
+.speed-gradient-tertiary {
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  margin: 15px auto auto 15px;
+  position: absolute;
+  background: linear-gradient(to top, var(--dark-blue), var(--light-aqua));
+}
+
+.speed-inner-tertiary {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: var(--dark-grey);
+  margin: 10px auto auto 10px;
+  position: absolute;
+}
+
+.speed-inner-tertiary > p:first-child {
+  font-size: 30px;
+  margin-top: 5px;
+  color: var(--light-aqua)
+}
+
+.speed-inner-tertiary > p:nth-child(2) {
+  font-size: 70px;
+  margin-top: -45px;
+  color: var(--white)
+}
+
+.speed-inner-tertiary > p:nth-child(3) {
+  font-size: 20px;
+  margin-top: -85px;
+  color: var(--light-grey)
+}
+
+.battery-tertiary {
+  width: 190px;
+  background: linear-gradient(to right, var(--dark-blue), var(--light-aqua));
+  height: 90px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+  margin-left: 430px;
+}
+
+.battery-inner-tertiary {
+  background-color: var(--dark-grey);
+  margin-bottom: -10px;
+  padding: 0;
+  height: 90px;
+  width: 190px;
+  border-radius: 10px;
+  position: absolute;
+  margin: auto;
+}
+
+.battery-inner-tertiary > p:first-child {
+  color: var(--white);
+  font-size: 45px;
+  margin-top: 0;
+}
+
+.battery-inner-tertiary > p:nth-child(2) {
+  color: var(--light-grey);
+  font-size: 25px;
+  font-style: italic;
+  margin-top: -50px;
+}
+
+.battery-cap-tertiary {
+  width: 200px;
+  background: linear-gradient(to right, var(--dark-blue), var(--light-aqua));
+  height: 30px;
+  padding: 5px;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+/* END OF RIGHT SCREEN */

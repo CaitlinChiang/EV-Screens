@@ -12,6 +12,7 @@ class DriverMain extends Component {
     const speed = 78
     const tire_temperatures = [100, 200, 190, 180]
     const tire_pressures = [1.1, 1.2, 1.3, 1.4]
+    const break_temperatures = [800, 800, 200, 200]
 
     return (
       <div id="driver-main">
@@ -70,7 +71,7 @@ class DriverMain extends Component {
             <div class="wheel-main">
               <p>{tire_temperatures?.[0]}</p>
               <p>{tire_pressures?.[0]}</p>
-              {tire_temperatures?.[0] > 195 ?
+              {break_temperatures?.[0] > 650 ?
                 <div class="wheel-connector-main-left-warning" />
               :
                 <div class="wheel-connector-main-left-normal" />
@@ -80,7 +81,7 @@ class DriverMain extends Component {
             <div class="wheel-main">
               <p>{tire_temperatures?.[1]}</p>
               <p>{tire_pressures?.[1]}</p>
-              {tire_temperatures?.[1] > 195 ?
+              {break_temperatures?.[1] > 650 ?
                 <div class="wheel-connector-main-right-warning" />
               :
                 <div class="wheel-connector-main-right-normal" />
@@ -90,7 +91,7 @@ class DriverMain extends Component {
             <div class="wheel-main">
               <p>{tire_temperatures?.[2]}</p>
               <p>{tire_pressures?.[2]}</p>
-              {tire_temperatures?.[2] > 195 ?
+              {break_temperatures?.[2] > 650 ?
                 <div class="wheel-connector-main-left-warning" />
               :
                 <div class="wheel-connector-main-left-normal" />
@@ -100,13 +101,17 @@ class DriverMain extends Component {
             <div class="wheel-main">
               <p>{tire_temperatures?.[3]}</p>
               <p>{tire_pressures?.[3]}</p>
-              {tire_temperatures?.[3] > 195 ?
+              {break_temperatures?.[3] > 650 ?
                 <div class="wheel-connector-main-right-warning" />
               :
                 <div class="wheel-connector-main-right-normal" />
               }
             </div>
           </div>
+        </div>
+
+        <div class="camera-driver-main">
+          <p>Camera View</p>
         </div>
       </div> 
     )

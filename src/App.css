@@ -10,5 +10,6 @@
 }
 
 #content {
-  width: 672px;
+  width: 750px;
+  min-height: 200vh;
 }

@@ -1,20 +1,17 @@
 #driver-secondary {
-  margin-top: 400px;
-  height: 25vh;
+  margin-top: 10px;
+  height: 378px;
   width: 672px;
   background-color: var(--dark-grey);
   text-align: center;
-  padding-top: 2%;
-  padding-left: 5%;
   font-family: "Nunito", sans-serif;
   display: grid;
   grid-template-columns: 200px 250px 240px;
   grid-template-rows: 0 0;
-  position: fixed;
 }
 
 .driver-secondary-item {
-  margin-top: -15px;
+  margin-top: 15px;
 }
 
 /* LEFT SIDE OF SCREEN */
@@ -24,8 +21,8 @@
   grid-template-rows: auto auto;
   text-align: center;
   grid-gap: 30px;
+  margin-left: 10px;
   color: var(--white);
-  margin-left: -20px;
 }
 
 .lap-list-item {
@@ -57,7 +54,7 @@
   width: 170px;
   border-radius: 50%;
   margin: -10px auto auto 40px;
-  position: fixed;
+  position: absolute;
   background: linear-gradient(to top, var(--dark-blue), var(--light-aqua));
 }
 
@@ -67,7 +64,7 @@
   border-radius: 50%;
   background: var(--dark-grey);
   margin: 10px auto auto 10px;
-  position: fixed;
+  position: absolute;
 }
 
 .laps-inner > p {
