@@ -1,7 +1,8 @@
-import DriverMain from './components/demonstration/driver-main'
-import DriverSecondary from './components/demonstration/driver-secondary'
-import DriverTertiary from './components/demonstration/driver-tertiary'
-import PassengerMain from './components/demonstration/passenger-main'
+import DemoDriverMain from './components/demonstration/driver-main'
+import DemoDriverSecondary from './components/demonstration/driver-secondary'
+import DemoDriverTertiary from './components/demonstration/driver-tertiary'
+import DemoPassengerMain from './components/demonstration/passenger-main'
+import RaceDriverMain from './components/race/driver-main'
 import './App.css'
 import './styles/Global.css'
 
@@ -9,10 +10,11 @@ function App() {
   return (
     <div className="App">
       <div id="content">
-        <DriverMain />
-        <DriverSecondary />
-        <DriverTertiary />
-        <PassengerMain />
+        <DemoDriverMain />
+        <DemoDriverSecondary />
+        <DemoDriverTertiary />
+        <DemoPassengerMain />
+        <RaceDriverMain />
       </div>
     </div>
   )

@@ -5,6 +5,13 @@
   src: url("../public/fonts/Nunito-Bold.ttf");
 }
 
+@font-face {
+  font-family: "Darker Grotesque";
+  font-weight: 400;
+  font-display: fallback;
+  src: url("../public/fonts/DarkerGrotesque-Bold.ttf"),;
+}
+
 .App {
   text-align: center;
 }
