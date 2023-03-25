@@ -1,4 +1,5 @@
 import DriverMain from './components/demonstration/driver-main'
+import DriverTertiary from './components/demonstration/driver-tertiary'
 import './App.css'
 import './styles/Global.css'
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <div id="content">
         <DriverMain />
+        <DriverTertiary />
       </div>
     </div>
   )
