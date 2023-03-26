@@ -1,0 +1,641 @@
+#passenger-main-race {
+  margin-top: 10px;
+  height: 378px;
+  width: 672px;
+  background-color: var(--dark-purple);
+  text-align: center;
+  font-family: "Darker Grotesque", sans-serif;
+  position: relative;
+}
+
+.acceleration-bar-passenger {
+  width: 650px;
+  height: 5px; 
+  background-color: transparent;
+  border: 1px solid var(--white);
+  margin: 10px auto auto 10px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.acceleration-value-passenger {
+  width: 500px;
+  height: 5px; 
+  position: absolute;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+
+.icon-item-sun-passenger {
+  position: absolute;
+  margin-left: 155px;
+  margin-top: 25px;
+}
+
+.icon-item-moon-passenger {
+  position: absolute;
+  margin-left: 155px;
+  margin-top: 85px;
+}
+
+.speed-actions-passenger {
+  position: absolute;
+  margin: 20px 0 0 160px;
+  display: grid;
+  grid-template-columns: 90px 90px 90px;
+  margin: 110px 0 0 220px;
+}
+
+.speed-actions-passenger > div {
+  width: 80px;
+  height: 15px;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+.speed-actions-passenger > div > p {
+  margin-top: 0px;
+}
+
+.speed-actions-passenger > div:first-child {
+  background-color: var(--light-blue);
+}
+
+.speed-actions-passenger > div:nth-child(2) {
+  background-color: var(--dark-orange);
+}
+
+.speed-actions-passenger > div:last-child {
+  background-color: var(--white);
+}
+
+.race-speed-passenger {
+  position: absolute;
+}
+
+.race-speed-passenger > p:first-child {
+  font-size: 85px;
+  color: var(--white);
+  margin: 15px 0 10px 240px;
+  font-style: italic;
+}
+
+.race-speed-passenger > p:nth-child(2) {
+  font-size: 25px;
+  color: var(--white);
+  margin: -95px 0 0px 385px;
+  position: inherit;
+  font-style: italic;
+}
+
+.speed-details-passenger {
+  margin: -50px 0 0px 325px;
+  position: inherit;
+  color: var(--white);
+  width: 100px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.speed-details-passenger > p {
+  margin-top: -10px;
+}
+
+.modes-passenger {
+  position: absolute;
+  margin: 42px 0 0 490px; 
+  color: var(--medium-grey);
+  text-align: right;
+}
+
+.modes-passenger > p {
+  margin-top: -15px;
+  font-size: 25px;
+}
+
+.modes-passenger > p:first-child {
+  color: var(--white);
+}
+
+.center-bar {
+  width: 420px;
+  height: 20px;
+  position: absolute;
+  margin: 120px 0 0 120px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  padding: 1px;
+}
+
+.center-bar-value {
+  width: 320px;
+  height: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: var(--light-blue);
+}
+
+.center-bar-value > p {
+  color: var(--dark-purple);
+  position: absolute;
+}
+
+.center-bar-value > p:first-child {
+  margin: 2px 0 0 140px;
+}
+
+.center-bar-value > p:last-child {
+  margin: 2px 0 0 240px;
+}
+
+.center-piece-passenger {
+  width: 50px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 3px solid var(--white);
+  position: absolute;
+  margin: 175px 0 0 265px;
+}
+
+.center-piece-cap-passenger {
+  width: 25px;
+  height: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: transparent;
+  border: 3px solid var(--white);
+  position: absolute;
+  margin: 167px 0 0 277px;
+}
+
+.center-piece-level {
+  height: 60px;
+  background-color: var(--light-blue);
+  width: 44px;
+  margin-top: 33px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 3px solid var(--dark-purple);
+}
+
+.center-piece-level > p {
+  color: var(--dark-purple);
+}
+
+.center-piece-temp {
+  background-color: var(--dark-orange);
+  width: 25px;
+  position: absolute;
+  height: 25px;
+  margin: 5px 0 0 12px;
+  border-radius: 50%;
+}
+
+.center-piece-temp > p {
+  font-size: 12px;
+  color: var(--dark-purple);
+  margin-top: 7px;
+}
+
+.lap-time-passenger {
+  margin: 270px 0 0 265px;
+  color: var(--white);
+  font-size: 17px;
+  position: absolute;
+}
+
+.water-passenger {
+  width: 420px;
+  height: 20px;
+  position: absolute;
+  border: 2px solid var(--white);
+  margin: 340px 0 0 125px;
+  border-radius: 5px;
+}
+
+.water-passenger-value {
+  background-color: var(--white);
+  width: 320px;
+  height: 14px;
+  margin-top: 2px;
+  border: 1px solid var(--dark-purple);
+  border-radius: 5px;
+}
+
+.water-passenger-value > p {
+  color: var(--dark-purple);
+  font-size: 15px;
+  margin-left: 95px;
+  margin-top: -1px;
+}
+
+.lap-details-race {
+  display: grid;
+  grid-template-columns: 40px 40px;
+  grid-template-rows: 0 0 0;
+  position: absolute;
+  margin: 175px 0 0 240px;
+  font-size: 12px;
+  gap: 20px;
+}
+
+.lap-details-first {
+  color: var(--white);
+}
+
+.lap-details-second {
+  color: var(--green);
+}
+
+.lap-details-last {
+  color: var(--purple);
+}
+
+.lap-details-item > div {
+  width: 60px;
+  height: 15px;
+  background-color: var(--white);
+}
+
+.sector-timing-passenger-race {
+  display: grid;
+  grid-template-columns: 20px 65px 65px 65px;
+  grid-template-rows: 22px 22px 22px 22px;
+  position: absolute;
+  margin: 180px 0 0 340px;
+  font-size: 15px;
+}
+
+.sector-timing-passenger-race > div:nth-child(3) {
+  color: var(--green)
+}
+
+.sector-timing-passenger-race > div:nth-child(4) {
+  color: var(--purple);
+}
+
+.sector-timing-header-val {
+  color: var(--white);
+  font-size: 12px;
+}
+
+.sector-timing-passenger-headers {
+  background-color: var(--white);
+  width: 55px;
+  height: 15px;
+  font-size: 12px;
+  padding: 1px;
+  margin-left: 3px;
+}
+
+.sector-timing-passenger-headers > p {
+  margin-top: 2px;
+}
+
+.sector-timing-passenger-values {
+  margin-top: 10px;
+}
+
+.sector-timing-passenger-values > p {
+  color: var(--white);
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+.delta-passenger-values {
+  position: absolute;
+  margin: 0px 0 0 5px; 
+}
+
+.delta-passenger-boost {
+  background-color: var(--white);
+  width: 50px;
+  height: 12px;
+  margin-left: 150px;
+  position: absolute;
+  margin-top: 160px;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+}
+
+.delta-passenger-boost-two {
+  margin-top: 180px;
+  background-color: transparent;
+  border: 1px solid var(--light-blue);
+}
+
+.delta-passenger-boost-three {
+  margin-top: 200px;
+  background-color: transparent;
+  border: 1px solid var(--dark-orange);
+}
+
+.delta-passenger-boost-four {
+  margin-top: 240px;
+  background-color: var(--dark-orange);
+  border: 1px solid var(--dark-orange);
+}
+
+.delta-passenger-boost-five {
+  margin-top: 260px;
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue);
+}
+
+.delta-passenger-boost-six {
+  margin-top: 280px;
+  background-color: transparent;
+}
+
+.delta-passenger-values > p {
+  position: absolute;
+  color: var(--white);
+  font-size: 15px;
+  margin-top: 218px;
+}
+
+.delta-passenger-front-val {
+  margin-left: 105px;
+}
+
+.delta-passenger-back-val {
+  margin-left: 200px;
+}
+
+.wheel-passenger-one {
+  position: absolute;
+  margin-top: 30px;
+  width: 60px;
+  margin-left: 10px;
+  height: 160px;
+  border: 3px solid var(--white);
+  border-radius: 15px;
+}
+
+.wheel-passenger-horizontal {
+  width: 20px;
+  height: 3px;
+  position: absolute;
+}
+
+.wheel-passenger-long-horizontal {
+  position: absolute;
+  height: 3px;
+  width: 140px;
+}
+
+.wheel-passenger-vertical {
+  position: absolute;
+}
+
+.wheel-passenger-horizontal-one {
+  background-color: var(--white);
+  margin: 110px 0 0 125px;
+}
+
+.wheel-passenger-long-horizontal-one {
+  background-color: var(--white);
+  margin: 140px 0 0 145px;
+}
+
+.wheel-passenger-vertical-one {
+  height: 33px;
+  width: 3px;
+  background-color: var(--white);
+  margin: 110px 0 0 142px;
+}
+
+.wheel-passenger > p {
+  font-size: 25px;
+}
+
+.wheel-passenger > p:first-child {
+  margin-top: 10px;
+  color: var(--white);
+}
+
+.wheel-passenger > p:nth-child(2) {
+  color: var(--white);
+  margin-top: 85px;
+}
+
+.break-temp-race-passenger-one {
+  background-color: var(--white);
+  height: 80px;
+  width: 40px;
+  margin-top: 75px;
+  margin-left: 80px;
+  position: absolute;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.break-temp-race-passenger-one > p {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.wheel-passenger-three {
+  position: absolute;
+  margin-top: 200px;
+  width: 60px;
+  margin-left: 10px;
+  height: 160px;
+  border: 3px solid var(--light-blue);
+  border-radius: 15px;
+}
+
+.break-temp-race-passenger-three {
+  background-color: var(--light-blue);
+  height: 80px;
+  width: 40px;
+  margin-top: 245px;
+  margin-left: 80px;
+  position: absolute;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.break-temp-race-passenger-three > p {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.wheel-passenger-horizontal-three {
+  background-color: var(--light-blue);
+  margin: 290px 0 0 126px;
+  width: 22px;
+}
+
+.wheel-passenger-long-horizontal-three {
+  background-color: var(--light-blue);
+  margin: 320px 0 0 145px;
+}
+
+.wheel-passenger-vertical-three {
+  background-color: var(--light-blue);
+  margin: 293px 0 0 145px;
+  height: 30px;
+  width: 3px;
+}
+
+.wheel-passenger-two {
+  position: absolute;
+  margin-top: 30px;
+  width: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 160px;
+  border: 3px solid var(--white);
+  border-radius: 15px;
+  right: 0px;
+}
+
+.break-temp-race-passenger-two {
+  background-color: var(--dark-orange);
+  height: 80px;
+  width: 40px;
+  margin-top: 75px;
+  position: absolute;
+  right: 0px;
+  margin-right: 80px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.break-temp-race-passenger-two > p {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.wheel-passenger-vertical-two {
+  height: 30px;
+  width: 3px;
+  background-color: var(--dark-orange);
+  margin: 113px 0 0 525px;
+}
+
+.wheel-passenger-horizontal-two {
+  background-color: var(--dark-orange);
+  margin: 110px 0 0 525px;
+}
+
+.wheel-passenger-long-horizontal-two {
+  background-color: var(--dark-orange);
+  margin: 140px 0 0 300px;
+  width: 225px;
+}
+
+.wheel-passenger-four {
+  position: absolute;
+  margin-top: 200px;
+  width: 60px;
+  margin-right: 10px;
+  height: 160px;
+  border: 3px solid var(--dark-orange);
+  border-radius: 15px;
+  right: 0px;
+}
+
+.break-temp-race-passenger-four {
+  background-color: var(--white);
+  height: 80px;
+  width: 40px;
+  margin-top: 245px;
+  position: absolute;
+  right: 0px;
+  margin-right: 80px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.break-temp-race-passenger-four > p {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.wheel-passenger-horizontal-four {
+  background-color: var(--white);
+  margin: 290px 0 0 525px;
+}
+
+.wheel-passenger-vertical-four {
+  height: 30px;
+  width: 3px;
+  background-color: var(--white);
+  margin: 293px 0 0 525px;
+}
+
+.wheel-passenger-long-horizontal-four {
+  background-color: var(--white);
+  margin: 320px 0 0 300px;
+  width: 225px;
+}
+
+.horizontal-line-text-passenger {
+  font-size: 25px;
+  position: inherit;
+  color: var(--white);
+  border: 2px solid var(--dark-purple);
+  background-color: var(--dark-purple);
+}
+
+.horizontal-line-text-passenger-one {
+  margin-top: -17px;
+  margin-left: 60px;
+  z-index: 1;
+}
+
+.horizontal-line-text-passenger-two {
+  margin-top: -15px;
+  z-index: 1;
+  margin-left: 50px;
+  color: var(--dark-orange);
+}
+
+.horizontal-line-text-passenger-three {
+  margin-top: -15px;
+  margin-left: 60px;
+  z-index: 1;
+  color: var(--light-blue);
+}
+
+.horizontal-line-text-passenger-four {
+  margin-top: -15px;
+  z-index: 1;
+  margin-left: 50px;
+  color: var(--white);
+}
+
+.connect-to-battery-one {
+  width: 3px;
+  height: 28px;
+  background-color: var(--white);
+  position: absolute;
+  margin: 140px 0 0 285px;
+}
+
+.connect-to-battery-two {
+  width: 3px;
+  height: 27px;
+  background-color: var(--dark-orange);
+  position: absolute;
+  margin: 140px 0 0 298px;
+}
+
+.connect-to-battery-three {
+  width: 3px;
+  height: 13px;
+  background-color: var(--light-blue);
+  position: absolute;
+  margin: 310px 0 0 285px;
+}
+
+.connect-to-battery-four {
+  width: 3px;
+  height: 13px;
+  background-color: var(--white);
+  position: absolute;
+  margin: 310px 0 0 298px;
+}

@@ -3,6 +3,7 @@ import DemoDriverSecondary from './components/demonstration/driver-secondary'
 import DemoDriverTertiary from './components/demonstration/driver-tertiary'
 import DemoPassengerMain from './components/demonstration/passenger-main'
 import RaceDriverMain from './components/race/driver-main'
+import RacePassengerMain from './components/race/passenger-main'
 import './App.css'
 import './styles/Global.css'
 
@@ -15,6 +16,7 @@ function App() {
         <DemoDriverTertiary />
         <DemoPassengerMain />
         <RaceDriverMain />
+        <RacePassengerMain />
       </div>
     </div>
   )
