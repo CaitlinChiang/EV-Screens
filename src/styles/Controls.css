@@ -1,0 +1,48 @@
+#controls {
+  height: 500px;
+  width: 400px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  position: absolute;
+  margin: 10px 0 0 700px;
+}
+
+#controls > form {
+  padding: 30px;
+}
+
+.user-box {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .2s;
+}
+
+input:valid + label,
+input:focus + label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}

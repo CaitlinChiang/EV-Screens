@@ -3,11 +3,14 @@ import '../../styles/DriverSecondary.css'
 
 class DriverSecondary extends Component {
   render() {
-    const delta_front = 5.432
-    const delta_back = 1.346
-    const laps_remaining = 10
-    const current_sector_time = "3:55.104"
-    const current_lap_time = "1:36.373"
+    const {
+      delta_front,
+      delta_back,
+      current_lap_time,
+      current_sector_time,
+      laps_remaining
+    } = this.props
+
     const laps = ['11', '10', '09', '08', '07', '06', '05', '04']
 
     return (

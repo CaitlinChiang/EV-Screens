@@ -3,16 +3,27 @@ import '../../styles/DriverMain.css'
 
 class DriverMain extends Component {
   render() {
-    const delta_front = 5.432
-    const delta_back = 1.346
-    const battery_percentage = 100
-    const current_lap_time = "1:36.373"
-    const current_sector_time = "3:55.104"
-    const direction = 'N'
-    const speed = 78
-    const tire_temperatures = [100, 200, 190, 180]
-    const tire_pressures = [1.1, 1.2, 1.3, 1.4]
-    const break_temperatures = [800, 800, 200, 200]
+    const {
+      delta_front,
+      delta_back,
+      battery,
+      current_lap_time,
+      current_sector_time,
+      direction,
+      speed,
+      tire_temperatures_first,
+      tire_temperatures_second,
+      tire_temperatures_third,
+      tire_temperatures_fourth,
+      tire_pressures_first,
+      tire_pressures_second,
+      tire_pressures_third,
+      tire_pressures_fourth,
+      break_temperatures_first,
+      break_temperatures_second,
+      break_temperatures_third,
+      break_temperatures_fourth
+    } = this.props
 
     return (
       <div id="driver-main">
@@ -30,7 +41,7 @@ class DriverMain extends Component {
 
           <div class="battery">
             <div class="battery-inner">
-              <p>{battery_percentage}%</p>
+              <p>{battery}%</p>
             </div>
             <div class="battery-cap" />
           </div>
@@ -69,9 +80,9 @@ class DriverMain extends Component {
         <div class="driver-main-item">
           <div class="wheel-pressure-main">
             <div class="wheel-main">
-              <p>{tire_temperatures?.[0]}</p>
-              <p>{tire_pressures?.[0]}</p>
-              {break_temperatures?.[0] > 650 ?
+              <p>{tire_temperatures_first}</p>
+              <p>{tire_pressures_first}</p>
+              {break_temperatures_first > 650 ?
                 <div class="wheel-connector-main-left-warning" />
               :
                 <div class="wheel-connector-main-left-normal" />
@@ -79,9 +90,9 @@ class DriverMain extends Component {
             </div>
             
             <div class="wheel-main">
-              <p>{tire_temperatures?.[1]}</p>
-              <p>{tire_pressures?.[1]}</p>
-              {break_temperatures?.[1] > 650 ?
+              <p>{tire_temperatures_second}</p>
+              <p>{tire_pressures_second}</p>
+              {break_temperatures_second > 650 ?
                 <div class="wheel-connector-main-right-warning" />
               :
                 <div class="wheel-connector-main-right-normal" />
@@ -89,9 +100,9 @@ class DriverMain extends Component {
             </div>
 
             <div class="wheel-main">
-              <p>{tire_temperatures?.[2]}</p>
-              <p>{tire_pressures?.[2]}</p>
-              {break_temperatures?.[2] > 650 ?
+              <p>{tire_temperatures_third}</p>
+              <p>{tire_pressures_third}</p>
+              {break_temperatures_third > 650 ?
                 <div class="wheel-connector-main-left-warning" />
               :
                 <div class="wheel-connector-main-left-normal" />
@@ -99,9 +110,9 @@ class DriverMain extends Component {
             </div>
 
             <div class="wheel-main">
-              <p>{tire_temperatures?.[3]}</p>
-              <p>{tire_pressures?.[3]}</p>
-              {break_temperatures?.[3] > 650 ?
+              <p>{tire_temperatures_fourth}</p>
+              <p>{tire_pressures_fourth}</p>
+              {break_temperatures_fourth > 650 ?
                 <div class="wheel-connector-main-right-warning" />
               :
                 <div class="wheel-connector-main-right-normal" />

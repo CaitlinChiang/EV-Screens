@@ -3,21 +3,33 @@ import '../../styles/RaceDriverMain.css'
 
 class DriverMain extends Component {
   render() {
-    const delta_front = 5.432
-    const delta_back = 1.346
-    const battery_percentage = 69
-    const current_lap_time = "1:32.03"
-    const speed = 188
-    const tire_temperatures = [110, 110, 100, 120]
-    const tire_pressures = [1.1, 1.2, 1.1, 1.1]
-    const break_temperatures = [500, 600, 300, 500]
+    const {
+      delta_front,
+      delta_back,
+      battery,
+      battery_temperature,
+      current_lap_time,
+      speed,
+      tire_temperatures_first,
+      tire_temperatures_second,
+      tire_temperatures_third,
+      tire_temperatures_fourth,
+      tire_pressures_first,
+      tire_pressures_second,
+      tire_pressures_third,
+      tire_pressures_fourth,
+      break_temperatures_first,
+      break_temperatures_second,
+      break_temperatures_third,
+      break_temperatures_fourth
+    } = this.props
+
     const sector_timings = {
       s1: [38.432, 38.576, 37.954],
       s2: [47.233, 46.523, 46.532],
       s3: [19.553, 19.435, 18.326]
     }
     const break_details = [60, 80, 30, 60]
-    const battery_temperature = 70
 
     return (
       <div id="driver-main-race">
@@ -64,11 +76,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="wheel wheel-one">
-          <p>{tire_temperatures?.[0]}</p>
-          <p>{tire_pressures?.[0]}</p>
+          <p>{tire_temperatures_first}</p>
+          <p>{tire_pressures_first}</p>
         </div>
         <div class="break-temp-race-one">
-          <p>{break_temperatures?.[0]}</p>
+          <p>{break_temperatures_first}</p>
         </div>
         <div class="wheel-horizontal wheel-horizontal-one" />
         <div class="wheel-vertical wheel-vertical-one" />
@@ -77,11 +89,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="wheel wheel-three">
-          <p>{tire_temperatures?.[2]}</p>
-          <p>{tire_pressures?.[2]}</p>
+          <p>{tire_temperatures_third}</p>
+          <p>{tire_pressures_third}</p>
         </div>
         <div class="break-temp-race-three">
-          <p>{break_temperatures?.[2]}</p>
+          <p>{break_temperatures_third}</p>
         </div>
         <div class="wheel-horizontal wheel-horizontal-three" />
         <div class="wheel-vertical wheel-vertical-three" />
@@ -91,7 +103,7 @@ class DriverMain extends Component {
 
         <div class="center-bar">
           <div class="center-bar-value">
-            <p>{battery_percentage}%</p>
+            <p>{battery}%</p>
             <div class="center-piece-cap" />
             <div class="center-piece">
               <p>{battery_temperature}</p>
@@ -176,11 +188,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="wheel wheel-two">
-          <p>{tire_temperatures?.[1]}</p>
-          <p>{tire_pressures?.[1]}</p>
+          <p>{tire_temperatures_second}</p>
+          <p>{tire_pressures_second}</p>
         </div>
         <div class="break-temp-race-two">
-          <p>{break_temperatures?.[1]}</p>
+          <p>{break_temperatures_second}</p>
         </div>
         <div class="wheel-horizontal wheel-horizontal-two" />
         <div class="wheel-vertical wheel-vertical-two" />
@@ -189,11 +201,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="wheel wheel-four">
-          <p>{tire_temperatures?.[3]}</p>
-          <p>{tire_pressures?.[3]}</p>
+          <p>{tire_temperatures_fourth}</p>
+          <p>{tire_pressures_fourth}</p>
         </div>
         <div class="break-temp-race-four">
-          <p>{break_temperatures?.[3]}</p>
+          <p>{break_temperatures_fourth}</p>
         </div>
         <div class="wheel-horizontal wheel-horizontal-four" />
         <div class="wheel-vertical wheel-vertical-four" />

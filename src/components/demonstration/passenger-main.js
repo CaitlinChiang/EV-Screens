@@ -3,13 +3,16 @@ import '../../styles/PassengerMain.css'
 
 class PassengerMain extends Component {
   render() {
-    const delta_front = 5.432
-    const delta_back = 1.346
-    const laps_remaining = 10
-    const current_sector_time = "3:55.104"
-    const current_lap_time = "1:36.373"
+    const {
+      delta_front,
+      delta_back,
+      laps_remaining,
+      current_sector_time,
+      current_lap_time,
+      instructions
+    } = this.props
+
     const laps = ['11', '10', '09', '08', '07', '06', '05', '04']
-    const instructions = '500M TURN RIGHT'
 
     return (
       <div id="passenger-main">
@@ -29,7 +32,7 @@ class PassengerMain extends Component {
                     <p>LAP {lap}</p>
                   </div>
                   <div class="lap-list-item">
-                    <p>1:36.373</p>
+                    <p>1:40.373</p>
                   </div>
                 </>
               )
