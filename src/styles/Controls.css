@@ -1,5 +1,5 @@
 #controls {
-  height: 1200px;
+  height: 1300px;
   width: 400px;
   background-color: var(--dark-grey);
   text-align: center;
@@ -45,4 +45,13 @@ input:focus + label {
   left: 0;
   color: #03e9f4;
   font-size: 12px;
+}
+
+.input-container {
+  display: grid;
+  grid-template-columns: 160px 160px;
+  grid-template-rows: auto auto; 
+  text-align: center;
+  grid-gap: 15px;
+  margin-top: 10px;
 }

@@ -83,6 +83,99 @@ class Controls extends Component {
             />
             <label>Map Directions</label>
           </div>
+
+          <div class="input-container">
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTirePressuresFirst(event.target.value)}
+              />
+              <label>U.L. Tire Pressure</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTirePressuresSecond(event.target.value)}
+              />
+              <label>U.R. Tire Pressure</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTirePressuresThird(event.target.value)}
+              />
+              <label>L.L. Tire Pressure</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTirePressuresFourth(event.target.value)}
+              />
+              <label>L.R. Tire Pressure</label>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTireTemperaturesFirst(event.target.value)}
+              />
+              <label>U.L. Tire Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTireTemperaturesSecond(event.target.value)}
+              />
+              <label>U.R. Tire Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTireTemperaturesThird(event.target.value)}
+              />
+              <label>L.L. Tire Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onTireTemperaturesFourth(event.target.value)}
+              />
+              <label>L.R. Tire Temp</label>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onBreakTemperaturesFirst(event.target.value)}
+              />
+              <label>U.L. Break Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onBreakTemperaturesSecond(event.target.value)}
+              />
+              <label>U.R. Break Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onBreakTemperaturesThird(event.target.value)}
+              />
+              <label>L.L. Break Temp</label>
+            </div>
+            <div class="user-box">
+              <input 
+                type="text" 
+                onChange={(event) => this.props.onBreakTemperaturesFourth(event.target.value)}
+              />
+              <label>L.R. Break Temp</label>
+            </div>
+          </div>
         </form>
       </div>
     )
