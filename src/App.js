@@ -66,117 +66,94 @@ class App extends Component {
 
   onSpeed(newVal) {
     this.setState({ speed: newVal })
-    this.props.onSpeed(newVal)
   }
 
   onBattery(newVal) {
     this.setState({ battery: newVal })
-    this.props.onBattery(newVal)
   }
 
   onDeltaFront(newVal) {
     this.setState({ deltaFront: newVal })
-    this.props.onDeltaFront(newVal)
   }
 
   onDeltaBack(newVal) {
     this.setState({ deltaBack: newVal })
-    this.props.onDeltaBack(newVal)
   }
 
   onLapTime(newVal) {
     this.setState({ lapTime: newVal })
-    this.props.onLapTime(newVal)
   }
 
   onSectorTime(newVal) {
     this.setState({ sectorTime: newVal })
-    this.props.onSectorTime(newVal)
   }
 
   onDirection(newVal) {
     this.setState({ direction: newVal })
-    this.props.onDirection(newVal)
   }
 
   onTirePressuresFirst(newVal) {
     this.setState({ tire_pressures_first: newVal })
-    this.props.onTirePressuresFirst(newVal)
   }
 
   onTirePressuresSecond(newVal) {
     this.setState({ tire_pressures_second: newVal })
-    this.props.onTirePressuresSecond(newVal)
   }
 
   onTirePressuresThird(newVal) {
     this.setState({ tire_pressures_third: newVal })
-    this.props.onTirePressuresThird(newVal)
   }
 
   onTirePressuresFourth(newVal) {
     this.setState({ tire_pressures_fourth: newVal })
-    this.props.onTirePressuresFourth(newVal)
   }
 
   onTireTemperaturesFirst(newVal) {
     this.setState({ tire_temperatures_first: newVal })
-    this.props.onTireTemperaturesFirst(newVal)
   }
 
   onTireTemperaturesSecond(newVal) {
     this.setState({ tire_temperatures_second: newVal })
-    this.props.onTireTemperaturesSecond(newVal)
   }
 
   onTireTemperaturesThird(newVal) {
     this.setState({ tire_temperatures_third: newVal })
-    this.props.onTireTemperaturesThird(newVal)
   }
 
   onTireTemperaturesFourth(newVal) {
     this.setState({ tire_temperatures_fourth: newVal })
-    this.props.onTireTemperaturesFourth(newVal)
   }
 
   onBreakTemperaturesFirst(newVal) {
     this.setState({ break_temperatures_first: newVal })
-    this.props.onBreakTemperaturesFirst(newVal)
   }
 
   onBreakTemperaturesSecond(newVal) {
     this.setState({ break_temperatures_second: newVal })
-    this.props.onBreakTemperaturesSecond(newVal)
   }
 
   onBreakTemperaturesThird(newVal) {
     this.setState({ break_temperatures_third: newVal })
-    this.props.onBreakTemperaturesThird(newVal)
   }
 
   onBreakTemperaturesFourth(newVal) {
     this.setState({ break_temperatures_fourth: newVal })
-    this.props.onBreakTemperaturesFourth(newVal)
   }
 
   onLapsRemaining(newVal) {
     this.setState({ lapsRemaining: newVal })
-    this.props.onLapsRemaining(newVal)
   }
 
   onTimeLeft(newVal) {
     this.setState({ timeLeft: newVal })
-    this.props.onTimeLeft(newVal)
   }
 
   onInstructions(newVal) {
     this.setState({ instructions: newVal })
-    this.props.onInstructions(newVal)
   }
 
   onBatteryTemp(newVal) {
     this.setState({ batteryTemp: newVal })
-    this.props.onBatteryTemp(newVal)
   }
 
   render() {
@@ -211,6 +188,28 @@ class App extends Component {
         <div id="content">
           <Controls
             onSpeed={this.onSpeed}
+            onBattery={this.onBattery}
+            onBatteryTemp={this.onBatteryTemp}
+            onDirection={this.onDirection}
+            onDeltaFront={this.onDeltaFront}
+            onDeltaBack={this.onDeltaBack}
+            onLapTime={this.onLapTime}
+            onLapsRemaining={this.onLapsRemaining}
+            onSectorTime={this.onSectorTime}
+            onTimeLeft={this.onTimeLeft}
+            onInstructions={this.onInstructions}
+            onTirePressuresFirst={this.onTirePressuresFirst}
+            onTirePressuresSecond={this.onTirePressuresSecond}
+            onTirePressuresThird={this.onTirePressuresThird}
+            onTirePressuresFourth={this.onTirePressuresFourth}
+            onTireTemperaturesFirst={this.onTireTemperaturesFirst}
+            onTireTemperaturesSecond={this.onTireTemperaturesSecond}
+            onTireTemperaturesThird={this.onTireTemperaturesThird}
+            onTireTemperaturesFourth={this.onTireTemperaturesFourth}
+            onBreakTemperaturesFirst={this.onBreakTemperaturesFirst}
+            onBreakTemperaturesSecond={this.onBreakTemperaturesSecond}
+            onBreakTemperaturesThird={this.onBreakTemperaturesThird}
+            onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
           />
 
           <DemoDriverMain
