@@ -8,7 +8,7 @@ import RacePassengerMain from './components/race/passenger-main'
 import Controls from './components/controls'
 import './App.css'
 import './styles/Global.css'
-var gpio = require("pi-gpio")
+// var gpio = require("pi-gpio")
 
 class App extends Component {
   constructor(props) {
