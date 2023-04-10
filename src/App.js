@@ -8,13 +8,20 @@ import RacePassengerMain from './components/race/passenger-main'
 import Controls from './components/controls'
 import './App.css'
 import './styles/Global.css'
+// var gpio = require("pi-gpio")
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      
+      showDemoDriverMain: true,
+      showDemoDriverSecondary: false,
+      showDemoDriverTertiary: false,
+      showDemoPassengerMain: false,
+      showDemoPassengerSecondary: false,
+      showRaceDriverMain: false,
+      showRacePassengerMain: false,
 
       speed: 78,
       battery: 100,
@@ -138,6 +145,14 @@ class App extends Component {
 
   render() {
     const { 
+      showDemoDriverMain,
+      showDemoDriverSecondary,
+      showDemoDriverTertiary,
+      showDemoPassengerMain,
+      showDemoPassengerSecondary,
+      showRaceDriverMain,
+      showRacePassengerMain,
+
       speed,
       battery,
       batteryTemp,
@@ -202,106 +217,118 @@ class App extends Component {
             onBreakTemperaturesThird={this.onBreakTemperaturesThird}
             onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
           />
+          
+          {showDemoDriverMain && (
+            <DemoDriverMain
+              delta_front={deltaFront} 
+              delta_back={deltaBack}
+              battery={battery}
+              current_lap_time={lapTime}
+              current_sector_time={sectorTime}
+              direction={direction}
+              speed={speed}
+              tire_temperatures_first={tire_temperatures_first}
+              tire_temperatures_second={tire_temperatures_second}
+              tire_temperatures_third={tire_temperatures_third}
+              tire_temperatures_fourth={tire_temperatures_fourth}
+              tire_pressures_first={tire_pressures_first}
+              tire_pressures_second={tire_pressures_second}
+              tire_pressures_third={tire_pressures_third}
+              tire_pressures_fourth={tire_pressures_fourth}
+              break_temperatures_first={break_temperatures_first}
+              break_temperatures_second={break_temperatures_second}
+              break_temperatures_third={break_temperatures_third}
+              break_temperatures_fourth={break_temperatures_fourth}
+            />
+          )}
 
-          <DemoDriverMain
-            delta_front={deltaFront} 
-            delta_back={deltaBack}
-            battery={battery}
-            current_lap_time={lapTime}
-            current_sector_time={sectorTime}
-            direction={direction}
-            speed={speed}
-            tire_temperatures_first={tire_temperatures_first}
-            tire_temperatures_second={tire_temperatures_second}
-            tire_temperatures_third={tire_temperatures_third}
-            tire_temperatures_fourth={tire_temperatures_fourth}
-            tire_pressures_first={tire_pressures_first}
-            tire_pressures_second={tire_pressures_second}
-            tire_pressures_third={tire_pressures_third}
-            tire_pressures_fourth={tire_pressures_fourth}
-            break_temperatures_first={break_temperatures_first}
-            break_temperatures_second={break_temperatures_second}
-            break_temperatures_third={break_temperatures_third}
-            break_temperatures_fourth={break_temperatures_fourth}
-          />
+          {showDemoDriverSecondary && (
+            <DemoDriverSecondary 
+              delta_front={deltaFront} 
+              delta_back={deltaBack}
+              current_lap_time={lapTime}
+              current_sector_time={sectorTime}
+              laps_remaining={lapsRemaining}
+            />
+          )}
 
-          <DemoDriverSecondary 
-            delta_front={deltaFront} 
-            delta_back={deltaBack}
-            current_lap_time={lapTime}
-            current_sector_time={sectorTime}
-            laps_remaining={lapsRemaining}
-          />
+          {(showDemoDriverTertiary || showDemoPassengerSecondary) && (
+            <DemoDriverTertiary 
+              battery={battery}
+              time_left={timeLeft}
+              direction={direction}
+              speed={speed}
+              tire_temperatures_first={tire_temperatures_first}
+              tire_temperatures_second={tire_temperatures_second}
+              tire_temperatures_third={tire_temperatures_third}
+              tire_temperatures_fourth={tire_temperatures_fourth}
+              tire_pressures_first={tire_pressures_first}
+              tire_pressures_second={tire_pressures_second}
+              tire_pressures_third={tire_pressures_third}
+              tire_pressures_fourth={tire_pressures_fourth}
+              break_temperatures_first={break_temperatures_first}
+              break_temperatures_second={break_temperatures_second}
+              break_temperatures_third={break_temperatures_third}
+              break_temperatures_fourth={break_temperatures_fourth}
+            />
+          )}
 
-          <DemoDriverTertiary 
-            battery={battery}
-            time_left={timeLeft}
-            direction={direction}
-            speed={speed}
-            tire_temperatures_first={tire_temperatures_first}
-            tire_temperatures_second={tire_temperatures_second}
-            tire_temperatures_third={tire_temperatures_third}
-            tire_temperatures_fourth={tire_temperatures_fourth}
-            tire_pressures_first={tire_pressures_first}
-            tire_pressures_second={tire_pressures_second}
-            tire_pressures_third={tire_pressures_third}
-            tire_pressures_fourth={tire_pressures_fourth}
-            break_temperatures_first={break_temperatures_first}
-            break_temperatures_second={break_temperatures_second}
-            break_temperatures_third={break_temperatures_third}
-            break_temperatures_fourth={break_temperatures_fourth}
-          />
+          {showDemoPassengerMain && (
+            <DemoPassengerMain 
+              delta_front={deltaFront} 
+              delta_back={deltaBack}
+              laps_remaining={lapsRemaining}
+              current_lap_time={lapTime}
+              current_sector_time={sectorTime}
+              instructions={instructions}
+            />
+          )}
 
-          <DemoPassengerMain 
-            delta_front={deltaFront} 
-            delta_back={deltaBack}
-            laps_remaining={lapsRemaining}
-            current_lap_time={lapTime}
-            current_sector_time={sectorTime}
-            instructions={instructions}
-          />
+          {showRaceDriverMain && (
+            <RaceDriverMain 
+              delta_front={deltaFront} 
+              delta_back={deltaBack}
+              battery={battery}
+              speed={speed}
+              battery_temperature={batteryTemp}
+              current_lap_time={lapTime}
+              tire_temperatures_first={tire_temperatures_first}
+              tire_temperatures_second={tire_temperatures_second}
+              tire_temperatures_third={tire_temperatures_third}
+              tire_temperatures_fourth={tire_temperatures_fourth}
+              tire_pressures_first={tire_pressures_first}
+              tire_pressures_second={tire_pressures_second}
+              tire_pressures_third={tire_pressures_third}
+              tire_pressures_fourth={tire_pressures_fourth}
+              break_temperatures_first={break_temperatures_first}
+              break_temperatures_second={break_temperatures_second}
+              break_temperatures_third={break_temperatures_third}
+              break_temperatures_fourth={break_temperatures_fourth}
+            />
+          )}
 
-          <RaceDriverMain 
-            delta_front={deltaFront} 
-            delta_back={deltaBack}
-            battery={battery}
-            speed={speed}
-            battery_temperature={batteryTemp}
-            current_lap_time={lapTime}
-            tire_temperatures_first={tire_temperatures_first}
-            tire_temperatures_second={tire_temperatures_second}
-            tire_temperatures_third={tire_temperatures_third}
-            tire_temperatures_fourth={tire_temperatures_fourth}
-            tire_pressures_first={tire_pressures_first}
-            tire_pressures_second={tire_pressures_second}
-            tire_pressures_third={tire_pressures_third}
-            tire_pressures_fourth={tire_pressures_fourth}
-            break_temperatures_first={break_temperatures_first}
-            break_temperatures_second={break_temperatures_second}
-            break_temperatures_third={break_temperatures_third}
-            break_temperatures_fourth={break_temperatures_fourth}
-          />
-
-          <RacePassengerMain 
-            delta_front={deltaFront} 
-            delta_back={deltaBack}
-            battery={battery}
-            speed={speed}
-            battery_temperature={batteryTemp}
-            current_lap_time={lapTime}
-            tire_temperatures_first={tire_temperatures_first}
-            tire_temperatures_second={tire_temperatures_second}
-            tire_temperatures_third={tire_temperatures_third}
-            tire_temperatures_fourth={tire_temperatures_fourth}
-            tire_pressures_first={tire_pressures_first}
-            tire_pressures_second={tire_pressures_second}
-            tire_pressures_third={tire_pressures_third}
-            tire_pressures_fourth={tire_pressures_fourth}
-            break_temperatures_first={break_temperatures_first}
-            break_temperatures_second={break_temperatures_second}
-            break_temperatures_third={break_temperatures_third}
-            break_temperatures_fourth={break_temperatures_fourth}
-          />
+          {showRacePassengerMain && (
+            <RacePassengerMain 
+              delta_front={deltaFront} 
+              delta_back={deltaBack}
+              battery={battery}
+              speed={speed}
+              battery_temperature={batteryTemp}
+              current_lap_time={lapTime}
+              tire_temperatures_first={tire_temperatures_first}
+              tire_temperatures_second={tire_temperatures_second}
+              tire_temperatures_third={tire_temperatures_third}
+              tire_temperatures_fourth={tire_temperatures_fourth}
+              tire_pressures_first={tire_pressures_first}
+              tire_pressures_second={tire_pressures_second}
+              tire_pressures_third={tire_pressures_third}
+              tire_pressures_fourth={tire_pressures_fourth}
+              break_temperatures_first={break_temperatures_first}
+              break_temperatures_second={break_temperatures_second}
+              break_temperatures_third={break_temperatures_third}
+              break_temperatures_fourth={break_temperatures_fourth}
+            />
+          )}
         </div>
       </div>
     )
