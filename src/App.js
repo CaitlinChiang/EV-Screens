@@ -14,6 +14,8 @@ class App extends Component {
     super(props)
 
     this.state = {
+      
+
       speed: 78,
       battery: 100,
       batteryTemp: 70,
@@ -67,91 +69,69 @@ class App extends Component {
   onSpeed(newVal) {
     this.setState({ speed: newVal })
   }
-
   onBattery(newVal) {
     this.setState({ battery: newVal })
   }
-
   onDeltaFront(newVal) {
     this.setState({ deltaFront: newVal })
   }
-
   onDeltaBack(newVal) {
     this.setState({ deltaBack: newVal })
   }
-
   onLapTime(newVal) {
     this.setState({ lapTime: newVal })
   }
-
   onSectorTime(newVal) {
     this.setState({ sectorTime: newVal })
   }
-
   onDirection(newVal) {
     this.setState({ direction: newVal })
   }
-
   onTirePressuresFirst(newVal) {
     this.setState({ tire_pressures_first: newVal })
   }
-
   onTirePressuresSecond(newVal) {
     this.setState({ tire_pressures_second: newVal })
   }
-
   onTirePressuresThird(newVal) {
     this.setState({ tire_pressures_third: newVal })
   }
-
   onTirePressuresFourth(newVal) {
     this.setState({ tire_pressures_fourth: newVal })
   }
-
   onTireTemperaturesFirst(newVal) {
     this.setState({ tire_temperatures_first: newVal })
   }
-
   onTireTemperaturesSecond(newVal) {
     this.setState({ tire_temperatures_second: newVal })
   }
-
   onTireTemperaturesThird(newVal) {
     this.setState({ tire_temperatures_third: newVal })
   }
-
   onTireTemperaturesFourth(newVal) {
     this.setState({ tire_temperatures_fourth: newVal })
   }
-
   onBreakTemperaturesFirst(newVal) {
     this.setState({ break_temperatures_first: newVal })
   }
-
   onBreakTemperaturesSecond(newVal) {
     this.setState({ break_temperatures_second: newVal })
   }
-
   onBreakTemperaturesThird(newVal) {
     this.setState({ break_temperatures_third: newVal })
   }
-
   onBreakTemperaturesFourth(newVal) {
     this.setState({ break_temperatures_fourth: newVal })
   }
-
   onLapsRemaining(newVal) {
     this.setState({ lapsRemaining: newVal })
   }
-
   onTimeLeft(newVal) {
     this.setState({ timeLeft: newVal })
   }
-
   onInstructions(newVal) {
     this.setState({ instructions: newVal })
   }
-
   onBatteryTemp(newVal) {
     this.setState({ batteryTemp: newVal })
   }
@@ -182,6 +162,17 @@ class App extends Component {
       break_temperatures_third,
       break_temperatures_fourth
     } = this.state
+
+    // const makeRequestToRPI3 = () => {
+    //   const url = 'http://<rpi3_ip_address>:<port_number>/my-endpoint';
+    //   axios.get(url)
+    //     .then(response => {
+    //       // Handle the response from the RPI3
+    //     })
+    //     .catch(error => {
+    //       // Handle any errors that occur during the request
+    //     });
+    // }
 
     return (
       <div className="App">
