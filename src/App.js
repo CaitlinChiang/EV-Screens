@@ -2,27 +2,28 @@ import React, { Component } from 'react'
 import DemoDriverMain from './components/demonstration/driver-main'
 import DemoDriverSecondary from './components/demonstration/driver-secondary'
 import DemoDriverTertiary from './components/demonstration/driver-tertiary'
-import DemoPassengerMain from './components/demonstration/passenger-main'
 import RaceDriverMain from './components/race/driver-main'
 import RacePassengerMain from './components/race/passenger-main'
 import Controls from './components/controls'
 import './App.css'
 import './styles/Global.css'
-// var gpio = require("pi-gpio")
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      raceMode: false,
+      racePassengerMode: false,
+      demoMode: true,
       showDemoDriverMain: true,
       showDemoDriverSecondary: false,
       showDemoDriverTertiary: false,
-      showDemoPassengerMain: false,
-      showDemoPassengerSecondary: false,
       showRaceDriverMain: false,
       showRacePassengerMain: false,
-
+      leftCamera: false,
+      rightCamera: false,
+    
       speed: 78,
       battery: 100,
       batteryTemp: 70,
@@ -143,15 +144,206 @@ class App extends Component {
     this.setState({ batteryTemp: newVal })
   }
 
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      fetch('http://<your-rpi3-ip-address>:5000/leverleft')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1' && this.state.demoMode) {
+            this.setState({ 
+              showDemoDriverMain: false,
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: true,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          } else if (data.value === '0' && this.state.demoMode && this.state.showDemoDriverTertiary) {
+            this.setState({
+              showDemoDriverMain: true,
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+      
+      fetch('http://<your-rpi3-ip-address>:5000/leverright')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1' && this.state.demoMode) {
+            this.setState({ 
+              showDemoDriverMain: false,
+              showDemoDriverSecondary: true,
+              showDemoDriverTertiary: false,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          } else if (data.value === '0' && this.state.demoMode && this.state.showDemoDriverSecondary) {
+            this.setState({
+              showDemoDriverMain: true,
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+
+      fetch('http://<your-rpi3-ip-address>:5000/button1left')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1') {
+            this.setState({ 
+              showDemoDriverMain: false,
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: true,
+              rightCamera: false
+            })
+          } else if (data.value === '0' && this.state.leftCamera) {
+            if (this.state.demoMode) {
+              this.setState({ 
+                showDemoDriverMain: true,
+                showRaceDriverMain: false,
+                showRacePassengerMain: false
+              })
+            } else if (this.state.raceMode) {
+              this.setState({ 
+                showDemoDriverMain: false,
+                showRaceDriverMain: true,
+                showRacePassengerMain: false
+              })
+            } else if (this.state.racePassengerMode) {
+              this.setState({ 
+                showDemoDriverMain: false,
+                showRaceDriverMain: false,
+                showRacePassengerMain: true
+              })
+            }
+
+            this.setState({
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+
+      fetch('http://<your-rpi3-ip-address>:5000/button2right')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1') {
+            this.setState({ 
+              showDemoDriverMain: false,
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              showRaceDriverMain: false,
+              showRacePassengerMain: false,
+              leftCamera: false,
+              rightCamera: true
+            })
+          } else if (data.value === '0' && this.state.rightCamera) {
+            if (this.state.demoMode) {
+              this.setState({ 
+                showDemoDriverMain: true,
+                showRaceDriverMain: false,
+                showRacePassengerMain: false
+              })
+            } else if (this.state.raceMode) {
+              this.setState({ 
+                showDemoDriverMain: false,
+                showRaceDriverMain: true,
+                showRacePassengerMain: false
+              })
+            } else if (this.state.racePassengerMode) {
+              this.setState({ 
+                showDemoDriverMain: false,
+                showRaceDriverMain: false,
+                showRacePassengerMain: true
+              })
+            }
+
+            this.setState({
+              showDemoDriverSecondary: false,
+              showDemoDriverTertiary: false,
+              leftCamera: false,
+              rightCamera: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+
+      fetch('http://<your-rpi3-ip-address>:5000/button3left')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1') {
+            this.setState({ 
+              raceMode: true,
+              demoMode: false,
+              racePassengerMode: false
+            })
+          } else if (data.value === '0' && this.state.raceMode) {
+            this.setState({
+              raceMode: false,
+              demoMode: true,
+              racePassengerMode: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+
+      fetch('http://<your-rpi3-ip-address>:5000/button4right')
+        .then(response => response.json())
+        .then(data => {
+          if (data.value === '1') {
+            this.setState({ 
+              raceMode: false,
+              demoMode: false,
+              racePassengerMode: true
+            })
+          } else if (data.value === '0' && this.state.racePassengerMode) {
+            this.setState({
+              raceMode: false,
+              demoMode: true,
+              racePassengerMode: false
+            })
+          }
+        })
+        .catch(error => console.error(error))
+    }, 100)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId)
+  }
+
   render() {
-    const { 
+    const {
+      raceMode,
+      demoMode,
+      racePassengerMode,
       showDemoDriverMain,
       showDemoDriverSecondary,
       showDemoDriverTertiary,
-      showDemoPassengerMain,
-      showDemoPassengerSecondary,
       showRaceDriverMain,
       showRacePassengerMain,
+      // leftCamera,
+      // rightCamera,
 
       speed,
       battery,
@@ -163,7 +355,6 @@ class App extends Component {
       direction,
       lapsRemaining,
       timeLeft,
-      instructions,
       tire_temperatures_first,
       tire_temperatures_second,
       tire_temperatures_third,
@@ -177,17 +368,6 @@ class App extends Component {
       break_temperatures_third,
       break_temperatures_fourth
     } = this.state
-
-    // const makeRequestToRPI3 = () => {
-    //   const url = 'http://<rpi3_ip_address>:<port_number>/my-endpoint';
-    //   axios.get(url)
-    //     .then(response => {
-    //       // Handle the response from the RPI3
-    //     })
-    //     .catch(error => {
-    //       // Handle any errors that occur during the request
-    //     });
-    // }
 
     return (
       <div className="App">
@@ -218,7 +398,7 @@ class App extends Component {
             onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
           />
           
-          {showDemoDriverMain && (
+          {(demoMode && showDemoDriverMain) && (
             <DemoDriverMain
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -242,7 +422,7 @@ class App extends Component {
             />
           )}
 
-          {showDemoDriverSecondary && (
+          {(demoMode && showDemoDriverSecondary) && (
             <DemoDriverSecondary 
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -252,7 +432,7 @@ class App extends Component {
             />
           )}
 
-          {(showDemoDriverTertiary || showDemoPassengerSecondary) && (
+          {(demoMode && showDemoDriverTertiary) && (
             <DemoDriverTertiary 
               battery={battery}
               time_left={timeLeft}
@@ -273,18 +453,7 @@ class App extends Component {
             />
           )}
 
-          {showDemoPassengerMain && (
-            <DemoPassengerMain 
-              delta_front={deltaFront} 
-              delta_back={deltaBack}
-              laps_remaining={lapsRemaining}
-              current_lap_time={lapTime}
-              current_sector_time={sectorTime}
-              instructions={instructions}
-            />
-          )}
-
-          {showRaceDriverMain && (
+          {(raceMode || showRaceDriverMain) && (
             <RaceDriverMain 
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -307,7 +476,7 @@ class App extends Component {
             />
           )}
 
-          {showRacePassengerMain && (
+          {(racePassengerMode || showRacePassengerMain) && (
             <RacePassengerMain 
               delta_front={deltaFront} 
               delta_back={deltaBack}
