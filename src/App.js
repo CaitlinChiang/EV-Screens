@@ -146,10 +146,10 @@ class App extends Component {
 
   componentDidMount() {
     this.intervalId = setInterval(() => {
-      fetch('http://<your-rpi3-ip-address>:5000/leverleft')
+      fetch('http://10.15.127.246:5000/leverleft')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1' && this.state.demoMode) {
+          if (data === '1' && this.state.demoMode) {
             this.setState({ 
               showDemoDriverMain: false,
               showDemoDriverSecondary: false,
@@ -159,7 +159,7 @@ class App extends Component {
               leftCamera: false,
               rightCamera: false
             })
-          } else if (data.value === '0' && this.state.demoMode && this.state.showDemoDriverTertiary) {
+          } else if (data === '0' && this.state.demoMode && this.state.showDemoDriverTertiary) {
             this.setState({
               showDemoDriverMain: true,
               showDemoDriverSecondary: false,
@@ -173,10 +173,10 @@ class App extends Component {
         })
         .catch(error => console.error(error))
       
-      fetch('http://<your-rpi3-ip-address>:5000/leverright')
+      fetch('http://10.15.127.246:5000/leverright')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1' && this.state.demoMode) {
+          if (data === '1' && this.state.demoMode) {
             this.setState({ 
               showDemoDriverMain: false,
               showDemoDriverSecondary: true,
@@ -186,7 +186,7 @@ class App extends Component {
               leftCamera: false,
               rightCamera: false
             })
-          } else if (data.value === '0' && this.state.demoMode && this.state.showDemoDriverSecondary) {
+          } else if (data === '0' && this.state.demoMode && this.state.showDemoDriverSecondary) {
             this.setState({
               showDemoDriverMain: true,
               showDemoDriverSecondary: false,
@@ -200,10 +200,10 @@ class App extends Component {
         })
         .catch(error => console.error(error))
 
-      fetch('http://<your-rpi3-ip-address>:5000/button1left')
+      fetch('http://10.15.127.246:5000/button1left')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1') {
+          if (data === '1') {
             this.setState({ 
               showDemoDriverMain: false,
               showDemoDriverSecondary: false,
@@ -213,7 +213,7 @@ class App extends Component {
               leftCamera: true,
               rightCamera: false
             })
-          } else if (data.value === '0' && this.state.leftCamera) {
+          } else if (data === '0' && this.state.leftCamera) {
             if (this.state.demoMode) {
               this.setState({ 
                 showDemoDriverMain: true,
@@ -244,10 +244,10 @@ class App extends Component {
         })
         .catch(error => console.error(error))
 
-      fetch('http://<your-rpi3-ip-address>:5000/button2right')
+      fetch('http://10.15.127.246:5000/button2right')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1') {
+          if (data === '1') {
             this.setState({ 
               showDemoDriverMain: false,
               showDemoDriverSecondary: false,
@@ -257,7 +257,7 @@ class App extends Component {
               leftCamera: false,
               rightCamera: true
             })
-          } else if (data.value === '0' && this.state.rightCamera) {
+          } else if (data === '0' && this.state.rightCamera) {
             if (this.state.demoMode) {
               this.setState({ 
                 showDemoDriverMain: true,
@@ -288,16 +288,16 @@ class App extends Component {
         })
         .catch(error => console.error(error))
 
-      fetch('http://<your-rpi3-ip-address>:5000/button3left')
+      fetch('http://10.15.127.246:5000/button3left')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1') {
+          if (data === '1') {
             this.setState({ 
               raceMode: true,
               demoMode: false,
               racePassengerMode: false
             })
-          } else if (data.value === '0' && this.state.raceMode) {
+          } else if (data === '0' && this.state.raceMode) {
             this.setState({
               raceMode: false,
               demoMode: true,
@@ -307,16 +307,16 @@ class App extends Component {
         })
         .catch(error => console.error(error))
 
-      fetch('http://<your-rpi3-ip-address>:5000/button4right')
+      fetch('http://10.15.127.246:5000/button4right')
         .then(response => response.json())
         .then(data => {
-          if (data.value === '1') {
+          if (data === '1') {
             this.setState({ 
               raceMode: false,
               demoMode: false,
               racePassengerMode: true
             })
-          } else if (data.value === '0' && this.state.racePassengerMode) {
+          } else if (data === '0' && this.state.racePassengerMode) {
             this.setState({
               raceMode: false,
               demoMode: true,
