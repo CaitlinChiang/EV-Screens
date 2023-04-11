@@ -5,6 +5,8 @@ import DemoDriverTertiary from './components/demonstration/driver-tertiary'
 import RaceDriverMain from './components/race/driver-main'
 import RacePassengerMain from './components/race/passenger-main'
 import Controls from './components/controls'
+import LeftCamera from './components/leftCamera'
+import RightCamera from './components/rightCamera'
 import './App.css'
 import './styles/Global.css'
 
@@ -277,6 +279,14 @@ class App extends Component {
             onBreakTemperaturesThird={this.onBreakTemperaturesThird}
             onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
           />
+
+          {(show === 'LEFT_CAMERA') && (
+            <LeftCamera />
+          )}
+
+          {(show === 'RIGHT_CAMERA') && (
+            <RightCamera />
+          )}
           
           {(show === 'DEMO_DRIVER_MAIN') && (
             <DemoDriverMain

@@ -1,0 +1,25 @@
+#left-camera {
+  height: 378px;
+  width: 672px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  display: grid;
+  grid-template-columns: 200px 260px 240px;
+  grid-template-rows: 0 0;
+  position: relative;
+  color: var(--white);
+}
+
+#right-camera {
+  height: 378px;
+  width: 672px;
+  background-color: var(--dark-grey);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  display: grid;
+  grid-template-columns: 200px 260px 240px;
+  grid-template-rows: 0 0;
+  position: relative;
+  color: var(--white);
+}
