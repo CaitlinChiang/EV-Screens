@@ -152,7 +152,7 @@ class App extends Component {
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'DEMO_DRIVER_SECONDARY' })
-          } else if (data === 0 && show === 'DEMO_DRIVER_SECONDARY' ) {
+          } else if (data === 1 && show === 'DEMO_DRIVER_SECONDARY' ) {
             this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
@@ -164,7 +164,7 @@ class App extends Component {
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'DEMO_DRIVER_TERTIARY' })
-          } else if (data === 0 && show === 'DEMO_DRIVER_TERTIARY' ) {
+          } else if (data === 1 && show === 'DEMO_DRIVER_TERTIARY' ) {
             this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
