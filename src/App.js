@@ -13,17 +13,13 @@ class App extends Component {
     super(props)
 
     this.state = {
-      raceMode: false,
-      racePassengerMode: false,
-      demoMode: true,
-      showDemoDriverMain: true,
-      showDemoDriverSecondary: false,
-      showDemoDriverTertiary: false,
-      showRaceDriverMain: false,
-      showRacePassengerMain: false,
-      leftCamera: false,
-      rightCamera: false,
+      // SHOWCASE OF SCREENS FOR DEMO
+      // OPTIONS (DEMO): 'DEMO_DRIVER_MAIN', 'DEMO_DRIVER_SECONDARY', 'DEMO_DRIVER_TERTIARY'
+      // OPTIONS (RACE): 'RACE_DRIVER_MAIN', 'RACE_PASSENGER_MAIN'
+      // OPTIONS (CAMERA): 'LEFT_CAMERA', 'RIGHT_CAMERA'
+      show: 'DEMO_DRIVER_MAIN',
     
+      // VALUES FOR THE ELECTRIC VEHICLE
       speed: 78,
       battery: 100,
       batteryTemp: 70,
@@ -145,183 +141,77 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const { show } = this.state
+
     this.intervalId = setInterval(() => {
+      // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
       fetch('http://10.15.127.246:5000/leverleft')
         .then(response => response.json())
         .then(data => {
-          if (data === '1' && this.state.demoMode) {
-            this.setState({ 
-              showDemoDriverMain: false,
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: true,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: false,
-              rightCamera: false
-            })
-          } else if (data === '0' && this.state.demoMode && this.state.showDemoDriverTertiary) {
-            this.setState({
-              showDemoDriverMain: true,
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: false,
-              rightCamera: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'DEMO_DRIVER_SECONDARY' })
+          } else if (data === 0 && show === 'DEMO_DRIVER_SECONDARY' ) {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
       
+      // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
       fetch('http://10.15.127.246:5000/leverright')
         .then(response => response.json())
         .then(data => {
-          if (data === '1' && this.state.demoMode) {
-            this.setState({ 
-              showDemoDriverMain: false,
-              showDemoDriverSecondary: true,
-              showDemoDriverTertiary: false,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: false,
-              rightCamera: false
-            })
-          } else if (data === '0' && this.state.demoMode && this.state.showDemoDriverSecondary) {
-            this.setState({
-              showDemoDriverMain: true,
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: false,
-              rightCamera: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'DEMO_DRIVER_TERTIARY' })
+          } else if (data === 0 && show === 'DEMO_DRIVER_TERTIARY' ) {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
 
+      // VALUE FOR WHETHER LEFT CAMERA VIEW IS SEEN
       fetch('http://10.15.127.246:5000/button1left')
         .then(response => response.json())
         .then(data => {
-          if (data === '1') {
-            this.setState({ 
-              showDemoDriverMain: false,
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: true,
-              rightCamera: false
-            })
-          } else if (data === '0' && this.state.leftCamera) {
-            if (this.state.demoMode) {
-              this.setState({ 
-                showDemoDriverMain: true,
-                showRaceDriverMain: false,
-                showRacePassengerMain: false
-              })
-            } else if (this.state.raceMode) {
-              this.setState({ 
-                showDemoDriverMain: false,
-                showRaceDriverMain: true,
-                showRacePassengerMain: false
-              })
-            } else if (this.state.racePassengerMode) {
-              this.setState({ 
-                showDemoDriverMain: false,
-                showRaceDriverMain: false,
-                showRacePassengerMain: true
-              })
-            }
-
-            this.setState({
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              leftCamera: false,
-              rightCamera: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'LEFT_CAMERA' })
+          } else if (data === 1 && show === 'LEFT_CAMERA') {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
 
+      // VALUE FOR WHETHER RIGHT CAMERA VIEW IS SEEN
       fetch('http://10.15.127.246:5000/button2right')
         .then(response => response.json())
         .then(data => {
-          if (data === '1') {
-            this.setState({ 
-              showDemoDriverMain: false,
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              showRaceDriverMain: false,
-              showRacePassengerMain: false,
-              leftCamera: false,
-              rightCamera: true
-            })
-          } else if (data === '0' && this.state.rightCamera) {
-            if (this.state.demoMode) {
-              this.setState({ 
-                showDemoDriverMain: true,
-                showRaceDriverMain: false,
-                showRacePassengerMain: false
-              })
-            } else if (this.state.raceMode) {
-              this.setState({ 
-                showDemoDriverMain: false,
-                showRaceDriverMain: true,
-                showRacePassengerMain: false
-              })
-            } else if (this.state.racePassengerMode) {
-              this.setState({ 
-                showDemoDriverMain: false,
-                showRaceDriverMain: false,
-                showRacePassengerMain: true
-              })
-            }
-
-            this.setState({
-              showDemoDriverSecondary: false,
-              showDemoDriverTertiary: false,
-              leftCamera: false,
-              rightCamera: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'RIGHT_CAMERA' })
+          } else if (data === 1 && show === 'RIGHT_CAMERA') {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
 
+      // VALUE FOR WHETHER RACE DRIVER'S SCREEN IS SEEN
       fetch('http://10.15.127.246:5000/button3left')
         .then(response => response.json())
         .then(data => {
-          if (data === '1') {
-            this.setState({ 
-              raceMode: true,
-              demoMode: false,
-              racePassengerMode: false
-            })
-          } else if (data === '0' && this.state.raceMode) {
-            this.setState({
-              raceMode: false,
-              demoMode: true,
-              racePassengerMode: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'RACE_DRIVER_MAIN' })
+          } else if (data === 1 && show === 'RACE_DRIVER_MAIN' ) {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
 
+      // VALUE FOR WHETHER RACE PASSENGER'S SCREEN IS SEEN
       fetch('http://10.15.127.246:5000/button4right')
         .then(response => response.json())
         .then(data => {
-          if (data === '1') {
-            this.setState({ 
-              raceMode: false,
-              demoMode: false,
-              racePassengerMode: true
-            })
-          } else if (data === '0' && this.state.racePassengerMode) {
-            this.setState({
-              raceMode: false,
-              demoMode: true,
-              racePassengerMode: false
-            })
+          if (data === 0) {
+            this.setState({ show: 'RACE_PASSENGER_MAIN' })
+          } else if (data === 1 && show === 'RACE_PASSENGER_MAIN' ) {
+            this.setState({ show: 'DEMO_DRIVER_MAIN' })
           }
         })
         .catch(error => console.error(error))
@@ -334,17 +224,7 @@ class App extends Component {
 
   render() {
     const {
-      raceMode,
-      demoMode,
-      racePassengerMode,
-      showDemoDriverMain,
-      showDemoDriverSecondary,
-      showDemoDriverTertiary,
-      showRaceDriverMain,
-      showRacePassengerMain,
-      // leftCamera,
-      // rightCamera,
-
+      show,
       speed,
       battery,
       batteryTemp,
@@ -398,7 +278,7 @@ class App extends Component {
             onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
           />
           
-          {(demoMode && showDemoDriverMain) && (
+          {(show === 'DEMO_DRIVER_MAIN') && (
             <DemoDriverMain
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -422,7 +302,7 @@ class App extends Component {
             />
           )}
 
-          {(demoMode && showDemoDriverSecondary) && (
+          {(show === 'DEMO_DRIVER_SECONDARY') && (
             <DemoDriverSecondary 
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -432,7 +312,7 @@ class App extends Component {
             />
           )}
 
-          {(demoMode && showDemoDriverTertiary) && (
+          {(show === 'DEMO_DRIVER_TERTIARY') && (
             <DemoDriverTertiary 
               battery={battery}
               time_left={timeLeft}
@@ -453,7 +333,7 @@ class App extends Component {
             />
           )}
 
-          {(raceMode || showRaceDriverMain) && (
+          {(show === 'RACE_DRIVER_MAIN') && (
             <RaceDriverMain 
               delta_front={deltaFront} 
               delta_back={deltaBack}
@@ -476,7 +356,7 @@ class App extends Component {
             />
           )}
 
-          {(racePassengerMode || showRacePassengerMain) && (
+          {(show === 'RACE_PASSENGER_MAIN') && (
             <RacePassengerMain 
               delta_front={deltaFront} 
               delta_back={deltaBack}
