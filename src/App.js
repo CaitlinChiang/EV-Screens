@@ -143,8 +143,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { show } = this.state
-
     this.intervalId = setInterval(async () => {
       let showMain = true
 
@@ -217,7 +215,7 @@ class App extends Component {
       if (showMain) {
         this.setState({ show: 'DEMO_DRIVER_MAIN' })
       }
-    }, 100)
+    }, 200)
   }
 
   componentWillUnmount() {
