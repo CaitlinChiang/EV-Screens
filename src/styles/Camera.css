@@ -1,6 +1,7 @@
 #left-camera {
-  height: 378px;
-  width: 672px;
+  height: 450px;
+  width: 1100px;
+  padding-left: 200px;
   background-color: var(--dark-grey);
   text-align: center;
   font-family: "Nunito", sans-serif;
@@ -12,8 +13,9 @@
 }
 
 #right-camera {
-  height: 378px;
-  width: 672px;
+  height: 450px;
+  width: 1100px;
+  padding-left: 200px;
   background-color: var(--dark-grey);
   text-align: center;
   font-family: "Nunito", sans-serif;

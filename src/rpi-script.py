@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 from flask import Flask, jsonify
-from flask_cords import CORS
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
