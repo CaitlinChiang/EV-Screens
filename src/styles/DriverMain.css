@@ -1,6 +1,7 @@
 #driver-main {
-  height: 378px;
-  width: 672px;
+  height: 450px;
+  width: 1100px;
+  padding-left: 200px;
   background-color: var(--dark-grey);
   text-align: center;
   font-family: "Nunito", sans-serif;
@@ -11,8 +12,9 @@
 }
 
 .camera-driver-main { 
-  height: 110px; 
+  height: 150px; 
   width: 669px;
+  margin-left: 200px;
   position: absolute; 
   bottom: 0;
   background-color: transparent;

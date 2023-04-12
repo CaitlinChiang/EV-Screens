@@ -4,7 +4,6 @@ import DemoDriverSecondary from './components/demonstration/driver-secondary'
 import DemoDriverTertiary from './components/demonstration/driver-tertiary'
 import RaceDriverMain from './components/race/driver-main'
 import RacePassengerMain from './components/race/passenger-main'
-import Controls from './components/controls'
 import LeftCamera from './components/leftCamera'
 import RightCamera from './components/rightCamera'
 import './App.css'
@@ -19,7 +18,7 @@ class App extends Component {
       // OPTIONS (DEMO): 'DEMO_DRIVER_MAIN', 'DEMO_DRIVER_SECONDARY', 'DEMO_DRIVER_TERTIARY'
       // OPTIONS (RACE): 'RACE_DRIVER_MAIN', 'RACE_PASSENGER_MAIN'
       // OPTIONS (CAMERA): 'LEFT_CAMERA', 'RIGHT_CAMERA'
-      show: 'DEMO_DRIVER_MAIN',
+      show: 'RACE_DRIVER_MAIN',
     
       // VALUES FOR THE ELECTRIC VEHICLE
       speed: 78,
@@ -252,32 +251,6 @@ class App extends Component {
     return (
       <div className="App">
         <div id="content">
-          <Controls
-            onSpeed={this.onSpeed}
-            onBattery={this.onBattery}
-            onBatteryTemp={this.onBatteryTemp}
-            onDirection={this.onDirection}
-            onDeltaFront={this.onDeltaFront}
-            onDeltaBack={this.onDeltaBack}
-            onLapTime={this.onLapTime}
-            onLapsRemaining={this.onLapsRemaining}
-            onSectorTime={this.onSectorTime}
-            onTimeLeft={this.onTimeLeft}
-            onInstructions={this.onInstructions}
-            onTirePressuresFirst={this.onTirePressuresFirst}
-            onTirePressuresSecond={this.onTirePressuresSecond}
-            onTirePressuresThird={this.onTirePressuresThird}
-            onTirePressuresFourth={this.onTirePressuresFourth}
-            onTireTemperaturesFirst={this.onTireTemperaturesFirst}
-            onTireTemperaturesSecond={this.onTireTemperaturesSecond}
-            onTireTemperaturesThird={this.onTireTemperaturesThird}
-            onTireTemperaturesFourth={this.onTireTemperaturesFourth}
-            onBreakTemperaturesFirst={this.onBreakTemperaturesFirst}
-            onBreakTemperaturesSecond={this.onBreakTemperaturesSecond}
-            onBreakTemperaturesThird={this.onBreakTemperaturesThird}
-            onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
-          />
-
           {(show === 'LEFT_CAMERA') && (
             <LeftCamera />
           )}

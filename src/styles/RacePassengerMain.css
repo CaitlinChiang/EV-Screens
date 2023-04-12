@@ -1,7 +1,8 @@
 #passenger-main-race {
-  margin-top: 10px;
-  height: 378px;
-  width: 672px;
+  padding-left: 200px;
+  padding-top: 20px;
+  height: 450px;
+  width: 1100px;
   background-color: var(--dark-purple);
   text-align: center;
   font-family: "Darker Grotesque", sans-serif;
@@ -484,8 +485,7 @@
   position: absolute;
   margin-top: 30px;
   width: 60px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 440px;
   height: 160px;
   border: 3px solid var(--white);
   border-radius: 15px;
@@ -499,7 +499,7 @@
   margin-top: 75px;
   position: absolute;
   right: 0px;
-  margin-right: 80px;
+  margin-right: 510px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -531,7 +531,7 @@
   position: absolute;
   margin-top: 200px;
   width: 60px;
-  margin-right: 10px;
+  margin-right: 440px;
   height: 160px;
   border: 3px solid var(--dark-orange);
   border-radius: 15px;
@@ -545,7 +545,7 @@
   margin-top: 245px;
   position: absolute;
   right: 0px;
-  margin-right: 80px;
+  margin-right: 510px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
