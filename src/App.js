@@ -145,78 +145,78 @@ class App extends Component {
   componentDidMount() {
     const { show } = this.state
 
-    this.intervalId = setInterval(() => {
+    this.intervalId = setInterval(async () => {
+      let showMain = true
+
       // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
-      fetch('http://10.15.127.246:5000/leverleft')
+      await fetch('http://10.15.127.246:5000/leverleft')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'DEMO_DRIVER_SECONDARY' })
-          } else if (data === 1 && show === 'DEMO_DRIVER_SECONDARY' ) {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
       
       // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
-      fetch('http://10.15.127.246:5000/leverright')
+      await fetch('http://10.15.127.246:5000/leverright')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'DEMO_DRIVER_TERTIARY' })
-          } else if (data === 1 && show === 'DEMO_DRIVER_TERTIARY' ) {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
 
       // VALUE FOR WHETHER LEFT CAMERA VIEW IS SEEN
-      fetch('http://10.15.127.246:5000/button1left')
+      await fetch('http://10.15.127.246:5000/button1left')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'LEFT_CAMERA' })
-          } else if (data === 1 && show === 'LEFT_CAMERA') {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
 
       // VALUE FOR WHETHER RIGHT CAMERA VIEW IS SEEN
-      fetch('http://10.15.127.246:5000/button2right')
+      await fetch('http://10.15.127.246:5000/button2right')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'RIGHT_CAMERA' })
-          } else if (data === 1 && show === 'RIGHT_CAMERA') {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
 
       // VALUE FOR WHETHER RACE DRIVER'S SCREEN IS SEEN
-      fetch('http://10.15.127.246:5000/button3left')
+      await fetch('http://10.15.127.246:5000/button3left')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'RACE_DRIVER_MAIN' })
-          } else if (data === 1 && show === 'RACE_DRIVER_MAIN' ) {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
 
       // VALUE FOR WHETHER RACE PASSENGER'S SCREEN IS SEEN
-      fetch('http://10.15.127.246:5000/button4right')
+      await fetch('http://10.15.127.246:5000/button4right')
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
             this.setState({ show: 'RACE_PASSENGER_MAIN' })
-          } else if (data === 1 && show === 'RACE_PASSENGER_MAIN' ) {
-            this.setState({ show: 'DEMO_DRIVER_MAIN' })
+            showMain = false
           }
         })
         .catch(error => console.error(error))
+
+      if (showMain) {
+        this.setState({ show: 'DEMO_DRIVER_MAIN' })
+      }
     }, 100)
   }
 
