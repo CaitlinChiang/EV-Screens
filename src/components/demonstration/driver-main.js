@@ -2,6 +2,23 @@ import React, { Component } from 'react'
 import '../../styles/DriverMain.css'
 
 class DriverMain extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      videoUrl: null
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://10.15.127.246:5000/video')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob)
+        this.setState({ videoUrl: url })
+      })
+  }
+
   render() {
     const {
       delta_front,
@@ -24,6 +41,8 @@ class DriverMain extends Component {
       break_temperatures_third,
       break_temperatures_fourth
     } = this.props
+
+    const { videoUrl } = this.state
 
     return (
       <div id="driver-main">
@@ -122,7 +141,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="camera-driver-main">
-          <p>Camera View</p>
+          {videoUrl && (
+            <video controls>
+              <source src={videoUrl} type="application/x-mpegURL" />
+            </video>
+          )}
         </div>
       </div> 
     )

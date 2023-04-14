@@ -4,8 +4,7 @@ import DemoDriverSecondary from './components/demonstration/driver-secondary'
 import DemoDriverTertiary from './components/demonstration/driver-tertiary'
 import RaceDriverMain from './components/race/driver-main'
 import RacePassengerMain from './components/race/passenger-main'
-import LeftCamera from './components/leftCamera'
-import RightCamera from './components/rightCamera'
+import FrontCamera from './components/frontCamera'
 import './App.css'
 import './styles/Global.css'
 
@@ -17,7 +16,7 @@ class App extends Component {
       // SHOWCASE OF SCREENS FOR DEMO
       // OPTIONS (DEMO): 'DEMO_DRIVER_MAIN', 'DEMO_DRIVER_SECONDARY', 'DEMO_DRIVER_TERTIARY'
       // OPTIONS (RACE): 'RACE_DRIVER_MAIN', 'RACE_PASSENGER_MAIN'
-      // OPTIONS (CAMERA): 'LEFT_CAMERA', 'RIGHT_CAMERA'
+      // OPTIONS (CAMERA): 'FRONT_CAMERA'
       show: 'DEMO_DRIVER_MAIN',
     
       // VALUES FOR THE ELECTRIC VEHICLE
@@ -172,7 +171,7 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
-            this.setState({ show: 'LEFT_CAMERA' })
+            this.setState({ show: 'FRONT_CAMERA' })
             showMain = false
           }
         })
@@ -183,7 +182,7 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
           if (data === 0) {
-            this.setState({ show: 'RIGHT_CAMERA' })
+            this.setState({ show: 'FRONT_CAMERA' })
             showMain = false
           }
         })
@@ -251,12 +250,8 @@ class App extends Component {
     return (
       <div className="App">
         <div id="content">
-          {(show === 'LEFT_CAMERA') && (
-            <LeftCamera />
-          )}
-
-          {(show === 'RIGHT_CAMERA') && (
-            <RightCamera />
+          {(show === 'FRONT_CAMERA') && (
+            <FrontCamera />
           )}
           
           {(show === 'DEMO_DRIVER_MAIN') && (

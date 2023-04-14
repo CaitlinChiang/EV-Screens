@@ -2,6 +2,23 @@ import React, { Component } from 'react'
 import '../../styles/RaceDriverMain.css'
 
 class DriverMain extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      videoUrl: null
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://10.15.127.246:5000/video')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob)
+        this.setState({ videoUrl: url })
+      })
+  }
+
   render() {
     const {
       delta_front,
@@ -23,6 +40,8 @@ class DriverMain extends Component {
       break_temperatures_third,
       break_temperatures_fourth
     } = this.props
+
+    const { videoUrl } = this.state
 
     const sector_timings = {
       s1: [38.432, 38.576, 37.954],
@@ -214,7 +233,11 @@ class DriverMain extends Component {
         </div>
 
         <div class="camera-driver-race">
-          <p>Camera View</p>
+          {videoUrl && (
+            <video controls>
+              <source src={videoUrl} type="application/x-mpegURL" />
+            </video>
+          )}
         </div>
       </div> 
     )
