@@ -10,7 +10,7 @@ class FrontCamera extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     fetch('http://10.15.127.246:5000/video')
       .then(response => response.blob())
       .then(blob => {
