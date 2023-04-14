@@ -1,29 +1,17 @@
-# import cv2
-import RPi.GPIO as GPIO
-from flask import Flask, jsonify
+mport RPi.GPIO as GPIO
+from flask import Flask, jsonify, Response
 from flask_cors import CORS
+import time
+import io
+from picamera import PiCamera
+
+camera = PiCamera()
+camera.resolution = (800, 480)
+camera.framerate = 10
 
 app = Flask(__name__)
 CORS(app)
 
-# CODE FOR VIDEO LIVESTREAM
-# video = cv2.VideoCapture(0)
-
-# def video_stream():
-#     while True:
-#         ret, frame = video.read()
-#         if not ret:
-#             break;
-#         else:
-#             ret, buffer = cv2.imencode('.jpeg',frame)
-#             frame = buffer.tobytes()
-#             yield (b' --frame\r\n' b'Content-type: imgae/jpeg\r\n\r\n' + frame +b'\r\n')
-
-# @app.route('/video_feed')
-# def video_feed():
-#     return Response(video_stream(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-# CODE FOR BUTTONS & LEVERS
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -63,5 +51,18 @@ def button4right():
     data = GPIO.input(26)
     return jsonify(data)
 
+@app.route('/video')
+def video():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+def generate_frames():
+    while True:
+        stream = io.BytesIO()
+        camera.capture(stream, format='jpeg', use_video_port=True)
+        frame = stream.getvalue()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        time.sleep(0.1)
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')
