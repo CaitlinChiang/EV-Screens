@@ -1,4 +1,4 @@
-mport RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from flask import Flask, jsonify, Response
 from flask_cors import CORS
 import time
