@@ -1,30 +1,22 @@
-import cv2
-import numpy
-from flask import Flask, render_template, Response, stream_with_context, request
+from flask import Flask, render_template, Response
+from picamera import PiCamera
 
-video = cv2.VideoCapture(0)
-app = Flask('__name__')
+app = Flask(__name__)
+camera = PiCamera()
 
-
-def video_stream():
+def gen():
     while True:
-        ret, frame = video.read()
-        if not ret:
-            break;
-        else:
-            ret, buffer = cv2.imencode('.jpeg',frame)
-            frame = buffer.tobytes()
-            yield (b' --frame\r\n' b'Content-type: imgae/jpeg\r\n\r\n' + frame +b'\r\n')
-
-
-@app.route('/camera')
-def camera():
-    return render_template('camera.html')
-
+        frame = camera.get_frame()
+        
+        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(video_stream(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-app.run(host='0.0.0.0', port='5000', debug=False)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
