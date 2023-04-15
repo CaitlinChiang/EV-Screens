@@ -1,33 +1,41 @@
 import React, { Component } from 'react'
 import '../styles/Camera.css'
+import io from 'socket.io-client'
 
 class FrontCamera extends Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
-      videoUrl: null
-    }
+      socket: null,
+      streamUrl: '',
+    };
   }
 
-  async componentDidMount() {
-    fetch('http://10.15.127.246:5000/video')
-      .then(response => response.blob())
-      .then(blob => {
-        const url = URL.createObjectURL(blob)
-        this.setState({ videoUrl: url })
-      })
+  componentDidMount() {
+    const socket = io.connect('http://10.15.127.246:5000')
+
+    this.setState({ socket })
+
+    socket.on('video_feed', (url) => {
+      this.setState({ streamUrl: url })
+    })
+  }
+
+  componentWillUnmount() {
+    const { socket } = this.state
+
+    socket.disconnect()
   }
 
   render() {
-    const { videoUrl } = this.state
+    const { streamUrl } = this.state
 
     return (
       <div id="front-camera">
-        {videoUrl && (
-          <video controls>
-            <source src={videoUrl} type="application/x-mpegURL" />
-          </video>
+        {streamUrl ? (
+          <img src={streamUrl} alt="Video Stream" />
+        ) : (
+          <p>Waiting for video stream...</p>
         )}
       </div> 
     )
