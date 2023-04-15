@@ -12,19 +12,25 @@ class FrontCamera extends Component {
   }
 
   componentDidMount() {
-    const socket = io.connect('http://10.15.127.246:5000')
-
-    this.setState({ socket })
-
-    socket.on('video_feed', (url) => {
-      this.setState({ streamUrl: url })
-    })
+    this.interval = setInterval(() => {
+      fetch('http://10.15.127.246:5000/video_feed')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.blob()
+        })
+        .then(blob => {
+          this.setState({ imageSrc: URL.createObjectURL(blob) })
+        })
+        .catch(error => {
+          console.error('Error fetching video feed:', error)
+        })
+    }, 100)
   }
 
   componentWillUnmount() {
-    const { socket } = this.state
-
-    socket.disconnect()
+    clearInterval(this.interval)
   }
 
   render() {
