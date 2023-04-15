@@ -13,8 +13,8 @@ socketio = SocketIO(app)
 CORS(app)
 
 camera = PiCamera()
-# camera.resolution = (800, 480)
-# camera.framerate = 10
+camera.resolution = (800, 480)
+camera.framerate = 10
 
 GPIO.setmode(GPIO.BCM)
 
