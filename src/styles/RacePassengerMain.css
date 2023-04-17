@@ -3,10 +3,10 @@
   padding-top: 20px;
   height: 450px;
   width: 1100px;
-  background-color: var(--dark-purple);
   text-align: center;
   font-family: "Darker Grotesque", sans-serif;
   position: relative;
+  padding-top: 70px;
 }
 
 .acceleration-bar-passenger {
@@ -137,7 +137,7 @@
 }
 
 .center-bar-value > p {
-  color: var(--dark-purple);
+  color: var(--dark-grey);
   position: absolute;
 }
 
@@ -177,11 +177,11 @@
   margin-top: 33px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 3px solid var(--dark-purple);
+  border: 3px solid var(--dark-grey);
 }
 
 .center-piece-level > p {
-  color: var(--dark-purple);
+  color: var(--dark-grey);
 }
 
 .center-piece-temp {
@@ -195,7 +195,7 @@
 
 .center-piece-temp > p {
   font-size: 12px;
-  color: var(--dark-purple);
+  color: var(--dark-grey);
   margin-top: 7px;
 }
 
@@ -220,12 +220,12 @@
   width: 320px;
   height: 14px;
   margin-top: 2px;
-  border: 1px solid var(--dark-purple);
+  border: 1px solid var(--dark-grey);
   border-radius: 5px;
 }
 
 .water-passenger-value > p {
-  color: var(--dark-purple);
+  color: var(--dark-grey);
   font-size: 15px;
   margin-left: 95px;
   margin-top: -1px;
@@ -577,8 +577,8 @@
   font-size: 25px;
   position: inherit;
   color: var(--white);
-  border: 2px solid var(--dark-purple);
-  background-color: var(--dark-purple);
+  border: 2px solid var(--dark-grey);
+  background-color: var(--dark-grey);
 }
 
 .horizontal-line-text-passenger-one {

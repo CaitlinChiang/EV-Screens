@@ -4,11 +4,9 @@ import DemoDriverSecondary from './components/demonstration/driver-secondary'
 import DemoDriverTertiary from './components/demonstration/driver-tertiary'
 import RaceDriverMain from './components/race/driver-main'
 import RacePassengerMain from './components/race/passenger-main'
+import FrontCamera from './components/frontCamera'
 import './App.css'
 import './styles/Global.css'
-import Navigation from './components/menu'
-import Controls from './components/controls'
-import DemoPassengerMain from './components/demonstration/passenger-main'
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +45,6 @@ class App extends Component {
       break_temperatures_fourth: 500
     }
 
-    this.onMode = this.onMode.bind(this)
     this.onSpeed = this.onSpeed.bind(this)
     this.onBattery = this.onBattery.bind(this)
     this.onDeltaFront = this.onDeltaFront.bind(this)
@@ -73,9 +70,6 @@ class App extends Component {
     this.onBatteryTemp = this.onBatteryTemp.bind(this)
   }
 
-  onMode(newVal) {
-    this.setState({ show: newVal })
-  }
   onSpeed(newVal) {
     this.setState({ speed: newVal })
   }
@@ -146,6 +140,86 @@ class App extends Component {
     this.setState({ batteryTemp: newVal })
   }
 
+  componentDidMount() {
+    this.intervalId = setInterval(async () => {
+      let showMain = true
+
+      // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
+      await fetch('http://10.15.127.246:5000/leverleft')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'DEMO_DRIVER_SECONDARY' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+      
+      // VALUE FOR WHETHER DEMO DRIVER SECONDARY IS SEEN
+      await fetch('http://10.15.127.246:5000/leverright')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'DEMO_DRIVER_TERTIARY' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+
+      // VALUE FOR WHETHER LEFT CAMERA VIEW IS SEEN
+      await fetch('http://10.15.127.246:5000/button1left')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'FRONT_CAMERA' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+
+      // VALUE FOR WHETHER RIGHT CAMERA VIEW IS SEEN
+      await fetch('http://10.15.127.246:5000/button2right')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'FRONT_CAMERA' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+
+      // VALUE FOR WHETHER RACE DRIVER'S SCREEN IS SEEN
+      await fetch('http://10.15.127.246:5000/button3left')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'RACE_DRIVER_MAIN' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+
+      // VALUE FOR WHETHER RACE PASSENGER'S SCREEN IS SEEN
+      await fetch('http://10.15.127.246:5000/button4right')
+        .then(response => response.json())
+        .then(data => {
+          if (data === 0) {
+            this.setState({ show: 'RACE_PASSENGER_MAIN' })
+            showMain = false
+          }
+        })
+        .catch(error => console.error(error))
+
+      if (showMain) {
+        this.setState({ show: 'DEMO_DRIVER_MAIN' })
+      }
+    }, 200)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId)
+  }
+
   render() {
     const {
       show,
@@ -170,41 +244,16 @@ class App extends Component {
       break_temperatures_first,
       break_temperatures_second,
       break_temperatures_third,
-      break_temperatures_fourth,
-      instructions
+      break_temperatures_fourth
     } = this.state
 
     return (
       <div className="App">
         <div id="content">
-          <Navigation onMode={this.onMode} />
-
-          <Controls
-            onSpeed={this.onSpeed}
-            onBattery={this.onBattery}
-            onBatteryTemp={this.onBatteryTemp}
-            onDirection={this.onDirection}
-            onDeltaFront={this.onDeltaFront}
-            onDeltaBack={this.onDeltaBack}
-            onLapTime={this.onLapTime}
-            onLapsRemaining={this.onLapsRemaining}
-            onSectorTime={this.onSectorTime}
-            onTimeLeft={this.onTimeLeft}
-            onInstructions={this.onInstructions}
-            onTirePressuresFirst={this.onTirePressuresFirst}
-            onTirePressuresSecond={this.onTirePressuresSecond}
-            onTirePressuresThird={this.onTirePressuresThird}
-            onTirePressuresFourth={this.onTirePressuresFourth}
-            onTireTemperaturesFirst={this.onTireTemperaturesFirst}
-            onTireTemperaturesSecond={this.onTireTemperaturesSecond}
-            onTireTemperaturesThird={this.onTireTemperaturesThird}
-            onTireTemperaturesFourth={this.onTireTemperaturesFourth}
-            onBreakTemperaturesFirst={this.onBreakTemperaturesFirst}
-            onBreakTemperaturesSecond={this.onBreakTemperaturesSecond}
-            onBreakTemperaturesThird={this.onBreakTemperaturesThird}
-            onBreakTemperaturesFourth={this.onBreakTemperaturesFourth}
-          />
-
+          {(show === 'FRONT_CAMERA') && (
+            <FrontCamera />
+          )}
+          
           {(show === 'DEMO_DRIVER_MAIN') && (
             <DemoDriverMain
               delta_front={deltaFront} 
@@ -291,38 +340,6 @@ class App extends Component {
               speed={speed}
               battery_temperature={batteryTemp}
               current_lap_time={lapTime}
-              tire_temperatures_first={tire_temperatures_first}
-              tire_temperatures_second={tire_temperatures_second}
-              tire_temperatures_third={tire_temperatures_third}
-              tire_temperatures_fourth={tire_temperatures_fourth}
-              tire_pressures_first={tire_pressures_first}
-              tire_pressures_second={tire_pressures_second}
-              tire_pressures_third={tire_pressures_third}
-              tire_pressures_fourth={tire_pressures_fourth}
-              break_temperatures_first={break_temperatures_first}
-              break_temperatures_second={break_temperatures_second}
-              break_temperatures_third={break_temperatures_third}
-              break_temperatures_fourth={break_temperatures_fourth}
-            />
-          )}
-
-          {(show === 'DEMO_PASSENGER_MAIN') && (
-            <DemoPassengerMain 
-              delta_front={deltaFront} 
-              delta_back={deltaBack}
-              laps_remaining={lapsRemaining}
-              current_lap_time={lapTime}
-              current_sector_time={sectorTime}
-              instructions={instructions}
-            />
-          )}
-
-          {(show === 'DEMO_PASSENGER_SECONDARY') && (
-            <DemoDriverTertiary 
-              battery={battery}
-              time_left={timeLeft}
-              direction={direction}
-              speed={speed}
               tire_temperatures_first={tire_temperatures_first}
               tire_temperatures_second={tire_temperatures_second}
               tire_temperatures_third={tire_temperatures_third}

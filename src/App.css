@@ -17,6 +17,8 @@
 }
 
 #content {
-  width: 750px;
-  min-height: 200vh;
+  width: 1300px;
+  min-height: 105vh;
+  background-color: var(--dark-grey);
+  margin-left: -150px;
 }

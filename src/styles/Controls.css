@@ -1,11 +1,12 @@
 #controls {
-  height: 1300px;
-  width: 400px;
+  height: 100px;
+  width: 300px;
   background-color: var(--dark-grey);
   text-align: center;
   font-family: "Nunito", sans-serif;
   position: absolute;
-  margin: 0 0 0 700px;
+  margin: 50px 0 0 850px;
+  z-index: 1;
 }
 
 #controls > form {
@@ -21,7 +22,7 @@ input {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -33,7 +34,7 @@ label {
   top:0;
   left: 0;
   padding: 10px 0;
-  font-size: 16px;
+  font-size: 13px;
   color: #fff;
   pointer-events: none;
   transition: .2s;
@@ -44,13 +45,20 @@ input:focus + label {
   top: -20px;
   left: 0;
   color: #03e9f4;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .input-container {
   display: grid;
-  grid-template-columns: 160px 160px;
-  grid-template-rows: auto auto; 
+  grid-template-columns: 90px 100px 100px;
+  text-align: center;
+  grid-gap: 15px;
+  margin-top: 10px;
+}
+
+.input-container-1 {
+  display: grid;
+  grid-template-columns: 90px 100px 100px;
   text-align: center;
   grid-gap: 15px;
   margin-top: 10px;
