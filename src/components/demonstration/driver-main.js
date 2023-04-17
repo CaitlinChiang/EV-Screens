@@ -141,6 +141,7 @@ class DriverMain extends Component {
         </div>
 
         <div class="camera-driver-main">
+          <p>Camera View</p>
           {videoUrl && (
             <video controls>
               <source src={videoUrl} type="application/x-mpegURL" />
