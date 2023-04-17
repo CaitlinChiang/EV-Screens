@@ -56,7 +56,7 @@ nav {
 }
 
 .horizontal-menu.plain li a {
-	background: #2c2d2f linear-gradient(to left, #3B3D3F 50%, #2c2d2f 50%) repeat scroll 0 0 / 200% 100%;
+	background: var(--medium-grey) linear-gradient(to left, #3B3D3F 50%, #2c2d2f 50%) repeat scroll 0 0 / 200% 100%;
   z-index: 2;
 }
 

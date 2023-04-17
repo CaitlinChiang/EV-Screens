@@ -143,7 +143,7 @@ class App extends Component {
     this.setState({ instructions: newVal })
   }
   onBatteryTemp(newVal) {
-    this.setState({ batteryTemp: newVal })
+    this.setState({ batteryTemp: newVal || 70 })
   }
 
   render() {
@@ -180,6 +180,7 @@ class App extends Component {
           <Navigation onMode={this.onMode} />
 
           <Controls
+            values={this.state}
             onSpeed={this.onSpeed}
             onBattery={this.onBattery}
             onBatteryTemp={this.onBatteryTemp}
