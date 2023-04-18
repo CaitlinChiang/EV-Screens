@@ -14,6 +14,11 @@ GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(19, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+@app.route('/tilt', methods=['GET'])
+def tilt():
+    data = GPIO.input(5)
+    return jsonify(data)
+
 @app.route('/leverleft', methods=['GET'])
 def leverleft():
     data = GPIO.input(17)
