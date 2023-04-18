@@ -12,12 +12,12 @@ while True:
     headlight_indicator = GPIO.input(12)
     light_indicator = GPIO.input(16)
 
-    if headlight_indicator == True:
+    if headlight_indicator == False:
         GPIO.output(20, GPIO.HIGH)
     else:
         GPIO.output(20, GPIO.LOW)
 
-    if light_indicator == True:
+    if light_indicator == False:
         GPIO.output(21, GPIO.HIGH)
     else:
         GPIO.output(21, GPIO.LOW)
