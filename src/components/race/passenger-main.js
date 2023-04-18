@@ -57,7 +57,7 @@ class PassengerMain extends Component {
           <p>kph</p>
           <div class="speed-details-passenger">
             <p>{'4 / 57'}</p>
-            <p>{'POB'}</p>
+            <p>{'P08'}</p>
           </div>
         </div>
 

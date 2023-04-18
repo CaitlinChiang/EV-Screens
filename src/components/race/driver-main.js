@@ -88,7 +88,7 @@ class DriverMain extends Component {
           <p>kph</p>
           <div class="speed-details">
             <p>{'4 / 57'}</p>
-            <p>{'POB'}</p>
+            <p>{'P08'}</p>
             <p>{'BM -1.0'}</p>
           </div>
           <p class="speed-extra">{'BB 57.0'}</p>
